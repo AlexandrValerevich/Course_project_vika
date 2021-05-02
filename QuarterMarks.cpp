@@ -92,6 +92,38 @@ System::Void schoolcourseProject::QuarterMarks::buttonExit_Click(System::Object^
 
 System::Void schoolcourseProject::QuarterMarks::buttonAdd_Click(System::Object^ sender, System::EventArgs^ e)
 {
+    if (domainUpDownClasses->SelectedIndex == 0)
+    {
+        MessageBox::Show("Вы не ввели класс!", "Внимание!");
+        return;
+    }
+
+    if (domainUpDownPupil->SelectedIndex == 0)
+    {
+        MessageBox::Show("Вы не выбрали ученика!", "Внимание!");
+        return;
+    }
+
+    if (domainUpDownSubjects->SelectedIndex == 0)
+    {
+        MessageBox::Show("Вы не выбрали предмет!", "Внимание!");
+        return;
+    }
+
+    int num;    
+    auto isNum = Int32::TryParse(textBoxMark->Text, num);
+
+    if (!isNum) {
+        MessageBox::Show("Оценка должна быть числом!", "Внимание!");
+        return;
+    }
+
+    if (num < 0 || num > 10)
+    {
+        MessageBox::Show("Оценка должна быть в диапазоне от 0 до 10!", "Внимание!");
+        return;
+    }
+
 	return System::Void();
 }
 
@@ -152,7 +184,8 @@ System::Void schoolcourseProject::QuarterMarks::QuarterMarks_Load(System::Object
 
         while (dbReader->Read())
             domainUpDownClasses->Items->Add(dbReader[0]);//записываем данные из бд д
-        
+        domainUpDownClasses->SelectedIndex = 0;
+
         dbReader->Close();
     }
 
@@ -166,7 +199,7 @@ System::Void schoolcourseProject::QuarterMarks::QuarterMarks_Load(System::Object
 
         while (dbReader->Read())
             domainUpDownSubjects->Items->Add(dbReader[0]->ToString());
-
+        domainUpDownSubjects->SelectedIndex = 0;
         //закрываем соединения
         dbReader->Close();
     }
@@ -181,7 +214,7 @@ System::Void schoolcourseProject::QuarterMarks::QuarterMarks_Load(System::Object
 
         while (dbReader->Read())
             domainUpDownPupil->Items->Add(dbReader[0]->ToString());
-        
+        domainUpDownPupil->SelectedIndex = 0;
         //закрываем соединения
         dbReader->Close();
     }
@@ -226,3 +259,144 @@ System::Void schoolcourseProject::QuarterMarks::ClearTextBoxQuarterMarks()
 	return System::Void();
 }
 
+/*-------------------------------------------СОБЫТИЯ ОТВЕЧАЮЩИЕ ЗА ВЫБОРКУ ЭЛЕМЕНТОВ----------------------------------------------------*/
+
+System::Void schoolcourseProject::QuarterMarks::domainUpDownClasses_SelectedItemChanged(System::Object^ sender, System::EventArgs^ e)
+{
+    if (dataGridViewMarks->SelectedRows->Count == 1)
+        return;
+
+    String^ connectionString = StringConnection(); //строка подключения
+    OleDbConnection^ dbConnection = gcnew OleDbConnection(connectionString);
+
+    dbConnection->Open();//открываем соединение
+
+    String^ SELECT;
+    String^ FROM;
+    String^ WHERE;
+
+    auto rows = dataGridViewMarks->Rows;
+    int selectedIndex = domainUpDownSubjects->SelectedIndex;
+
+    String^ Pupil;
+    String^ NumberClass;
+    String^ Subject;
+
+    for (int i = 0; i < rows->Count - 1; i++)
+        rows[i]->Visible = true;
+
+    if (domainUpDownClasses->Text != "Все")
+    {
+        for (int i = 0; i < rows->Count - 1; i++) {
+            NumberClass = rows[i]->Cells["NumberClass"]->Value->ToString();
+            if (domainUpDownSubjects->Text != NumberClass)
+                rows[i]->Visible = false;
+        }
+
+        domainUpDownPupil->Items->Clear();
+        domainUpDownPupil->Items->Add("Все");
+        //Запрос на выборку всех предмеов
+        SELECT = "surname_pupil & ' ' & name_pupil";
+        FROM = "Pupil";
+        WHERE = "id_class IN (SELECT id_class FROM Class WHERE number_class LIKE '" + domainUpDownClasses->Text + "')";
+
+        auto dbReader = SelectRow(dbConnection, SELECT, FROM, WHERE);
+
+        while (dbReader->Read())
+            domainUpDownPupil->Items->Add(dbReader[0]->ToString());
+        
+        if (domainUpDownPupil->Items->Count != 1)
+            domainUpDownPupil->SelectedIndex = 0;
+        //закрываем соединения
+        dbReader->Close();
+    }
+    else {
+        //Запрос на выборку всех предмеов
+        SELECT = "surname_pupil & ' ' & name_pupil";
+        FROM = "Pupil";
+
+        auto dbReader = SelectRow(dbConnection, SELECT, FROM);
+
+        while (dbReader->Read())
+            domainUpDownPupil->Items->Add(dbReader[0]->ToString());
+
+        //закрываем соединения
+        dbReader->Close();
+    }
+
+    //Закрываем соединение
+    dbConnection->Close();
+
+    if (domainUpDownPupil->Text != "Все") {
+        for (int i = 0; i < rows->Count - 1; i++) {
+            Pupil = rows[i]->Cells["SurnameStudent"]->Value->ToString() + " " + rows[i]->Cells["NameStudent"]->Value->ToString();
+            if (domainUpDownPupil->Text != Pupil)
+                rows[i]->Visible = false;
+        }
+    }
+
+    if (domainUpDownSubjects->Text != "Все") {
+        for (int i = 0; i < rows->Count - 1; i++) {
+            Subject = rows[i]->Cells["Subject"]->Value->ToString();
+            if (domainUpDownSubjects->Text != Subject)
+                rows[i]->Visible = false;
+        }
+    }
+
+    return System::Void();
+}
+
+System::Void schoolcourseProject::QuarterMarks::domainUpDownPupil_SelectedItemChanged(System::Object^ sender, System::EventArgs^ e)
+{
+    domainUpDown_SelectedItemChanged();
+    return System::Void();
+}
+
+System::Void schoolcourseProject::QuarterMarks::domainUpDownSubjects_SelectedItemChanged(System::Object^ sender, System::EventArgs^ e)
+{
+    domainUpDown_SelectedItemChanged();
+    return System::Void();
+}
+
+System::Void schoolcourseProject::QuarterMarks::domainUpDown_SelectedItemChanged()
+{
+    if (dataGridViewMarks->SelectedRows->Count == 1)
+        return;
+
+    String^ Pupil;
+    String^ NumberClass;
+    String^ Subject;
+
+    auto rows = dataGridViewMarks->Rows;
+    int selectedIndex = domainUpDownSubjects->SelectedIndex;
+
+    for (int i = 0; i < rows->Count - 1; i++)
+        rows[i]->Visible = true;
+
+    if (domainUpDownPupil->Text != "Все") {
+        for (int i = 0; i < rows->Count - 1; i++) {
+            Pupil = rows[i]->Cells["SurnameStudent"]->Value->ToString() + " " + rows[i]->Cells["NameStudent"]->Value->ToString();
+            if (domainUpDownPupil->Text != Pupil)
+                rows[i]->Visible = false;
+        }
+    }
+
+    if (domainUpDownClasses->Text != "Все")
+    {
+        for (int i = 0; i < rows->Count - 1; i++) {
+            NumberClass = rows[i]->Cells["NumberClass"]->Value->ToString();
+            if (domainUpDownSubjects->Text != NumberClass)
+                rows[i]->Visible = false;
+        }
+    }
+
+    if (domainUpDownSubjects->Text != "Все") {
+        for (int i = 0; i < rows->Count - 1; i++) {
+            Subject = rows[i]->Cells["Subject"]->Value->ToString();
+            if (domainUpDownSubjects->Text != Subject)
+                rows[i]->Visible = false;
+        }
+    }
+
+    return System::Void();
+}
