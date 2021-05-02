@@ -6,6 +6,9 @@
 #include "Subjects.h"
 #include "ProgressClasses.h"
 #include "ProgressSubjects.h"
+#include "dbQuery.h"
+
+/*-------------------------------КНОПКИ ПЕРЕКЛЮЧЕНИЯ МЕЖДУ ФОРМАМИ И КНОПКА ВЫХОДА----------------------------------------*/
 
 System::Void schoolcourseProject::Teachers::buttonPupils_Click(System::Object^ sender, System::EventArgs^ e)
 {
@@ -85,6 +88,8 @@ System::Void schoolcourseProject::Teachers::buttonExit_Click(System::Object^ sen
     return System::Void();
 }
 
+/*-------------------------------КНОПКИ ДОБАВИТЬ УДАЛИТЬ ИЗМЕНИТЬ----------------------------------------*/
+
 System::Void schoolcourseProject::Teachers::buttonAdd_Click(System::Object^ sender, System::EventArgs^ e)
 {
     if (!(textBoxSurname->Text->Length &&
@@ -113,91 +118,92 @@ System::Void schoolcourseProject::Teachers::buttonAdd_Click(System::Object^ send
     String^ id_teacher;
     String^ id_class;
     String^ id_subject;
+    String^ id_class_teacher;
+    String^ Name = "'" + textBoxName->Text + "'";
+    String^ Surname = "'" + textBoxSurname->Text + "'";
+    String^ Patronymic = "'" + textBoxPatronymic->Text + "'";
+    String^ Classroom = textBoxClassroom->Text;
+    String^ NumberClass = "'" + domainUpDownClasses->Text + "'";
+    String^ Subject = "'" + domainUpDownSubjects->Text+ "'";
+
+    int CountRow = dataGridViewTeachers->Rows->Count - 1;
+    auto Rows = dataGridViewTeachers->Rows;
+
+    for (int i = 0; i < CountRow; i++)
+        if (Rows[i]->Cells["NameTeacher"]->Value->ToString() == textBoxName->Text)
+            if (Rows[i]->Cells["SurnameTeacher"]->Value->ToString() == textBoxSurname->Text)
+                if (Rows[i]->Cells["PatronymicTeacher"]->Value->ToString() == textBoxPatronymic->Text)
+                    if (Rows[i]->Cells["Classroom"]->Value->ToString() == textBoxClassroom->Text)
+                        if (Rows[i]->Cells["Class"]->Value->ToString() == domainUpDownClasses->Text)
+                            if (Rows[i]->Cells["Subject"]->Value->ToString() == domainUpDownSubjects->Text)
+        {
+            MessageBox::Show("Такая запись уже есть!", "Внимание!");
+            return;
+        }
 
     //подключение к БД
-    String^ connectionString = "provider=Microsoft.ACE.OLEDB.16.0;Data Source=school.accdb"; //строка подключения
+    String^ connectionString = StringConnection(); //строка подключения
     OleDbConnection^ dbConnection = gcnew OleDbConnection(connectionString);
 
     dbConnection->Open();//открываем соединение    
 
-    //запрос для класса
-    String^ query = 
-        "SELECT id_teacher " +
-        "FROM Teacher " +
-        "WHERE name_teacher LIKE '" + textBoxName->Text + "' " +
-        "AND surname_teacher LIKE '" + textBoxSurname->Text + "' " +
-        "AND patronymic_teacher LIKE '" + textBoxPatronymic->Text + "' ;";;
-        //делаем запрос для нахождение id класса
-    OleDbCommand^ dbCommand = gcnew OleDbCommand(query, dbConnection);
+    String^ TABLE;
+    String^ COLUMN;
+    String^ VALUES;
+    String^ SELECT = "id_teacher";
+    String^ FROM = "Teacher";
+    String^ WHERE = "name_teacher LIKE " + Name + " AND surname_teacher LIKE " + Surname + " AND patronymic_teacher LIKE " + Patronymic;
 
-    auto dbReaderTeacher = dbCommand->ExecuteReader();
+    id_teacher = SelectID(dbConnection, SELECT, FROM, WHERE);
 
     //Проверяем есть ли такой учитель
-    if (!dbReaderTeacher->HasRows) {
+    if (String::IsNullOrEmpty(id_teacher)) {
         //Если нет то добавляем
-        dbReaderTeacher->Close();
 
-        dbCommand->CommandText = 
-            "INSERT INTO Teacher(name_teacher, surname_teacher, patronymic_teacher, classroom) "+
-            "VALUES ('"+textBoxName->Text+"', '"+textBoxSurname->Text+"', '"+textBoxPatronymic->Text+"', '"+textBoxClassroom->Text+"');";
-        dbCommand->ExecuteNonQuery();
+        TABLE = "Teacher";
+        COLUMN = "name_teacher, surname_teacher, patronymic_teacher, classroom";
+        VALUES = Name + ", " + Surname + ", " + Patronymic + ", " + Classroom;
 
-        dbCommand->CommandText = "SELECT MAX(id_teacher) FROM Teacher";
-        dbReaderTeacher = dbCommand->ExecuteReader();
+        if (!InsertRow(dbConnection, TABLE, COLUMN, VALUES))
+        {
+            MessageBox::Show("Ошибка добавления учителя!", "Внимание!");
+            dbConnection->Close();
+            return;
+        }
+
+        id_teacher = SelectID(dbConnection, SELECT, FROM, WHERE);
     }
+       
+    SELECT = "id_class";
+    FROM = "Class";
+    WHERE = "number_class LIKE " + NumberClass;
 
-    dbReaderTeacher->Read();
-    id_teacher = dbReaderTeacher[0]->ToString();
-    dbReaderTeacher->Close();
-
-  
-    //запрос для класса
-    dbCommand->CommandText = "SELECT id_class FROM Class WHERE number_class LIKE '" + domainUpDownClasses->Text + "' ;"; //делаем запрос для нахождение id класса
-    auto dbReaderClass = dbCommand->ExecuteReader();
-
-    //читаем класс
-    dbReaderClass->Read();
-    id_class = dbReaderClass[0]->ToString();
-    dbReaderClass->Close();
+    id_class = SelectID(dbConnection, SELECT, FROM, WHERE);
     
     //меняем команду на предмет
 
-    dbCommand->CommandText = "SELECT id_subject FROM Subject WHERE name_subject LIKE '" + domainUpDownSubjects->Text + "' ;"; //делаем запрос для нахождение id класса
-    auto dbReaderSubject = dbCommand->ExecuteReader();
+    SELECT = "id_subject";
+    FROM = "Subject";
+    WHERE = "name_subject LIKE " + Subject;
 
-    //читаем предмет
-    dbReaderSubject->Read();
-    id_subject = dbReaderSubject[0]->ToString();
-    dbReaderSubject->Close();
-    
+    id_subject = SelectID(dbConnection, SELECT, FROM, WHERE);
+
     //Проверяем есть ли такая запись в Class_to_teacher
     
-    dbCommand->CommandText = "SELECT * " +
-        "FROM Class_to_teacher " +
-        "WHERE " +
-        "id_class = " + id_class + " AND " +
-        "id_teacher = " + id_teacher + " AND " +
-        "id_subject = " + id_subject + ";";
+    TABLE = "Class_to_teacher";
+    COLUMN = "id_class, id_teacher, id_subject";
+    VALUES = id_class + ", " + id_teacher + ", " + id_subject;
 
-    if(dbCommand->ExecuteNonQuery() < 1)
-    {     
-        dbCommand->CommandText =
-            "INSERT INTO Class_to_teacher (id_class, id_teacher, id_subject) " +
-            "VALUES (" + id_class + "," + id_teacher + ", "+id_subject+");";
-        dbCommand->ExecuteNonQuery();
-    }
-    else 
+    if (!InsertRow(dbConnection, TABLE, COLUMN, VALUES))
     {
-        MessageBox::Show("Такая запись уже есть!","Внимание!");
+        MessageBox::Show("Ошибка добавления предмета!", "Внимание!");
+        dbConnection->Close();
         return;
     }
 
     MessageBox::Show("Запись успешно добавлена!");
 
-    dataGridViewTeachers->Rows->Clear();
     Teachers_Load(nullptr, nullptr); 
-
-    ClearTextBoxTeachers();
 
     dbConnection->Close();
     return System::Void();
@@ -205,6 +211,12 @@ System::Void schoolcourseProject::Teachers::buttonAdd_Click(System::Object^ send
 
 System::Void schoolcourseProject::Teachers::buttonChange_Click(System::Object^ sender, System::EventArgs^ e)
 {
+    if (dataGridViewTeachers->SelectedRows->Count != 1) {
+        MessageBox::Show("Выберите одну строку!", "Внимание!");
+        return;
+    }
+
+    
     if (!(textBoxSurname->Text->Length &&
         textBoxName->Text->Length &&
         textBoxPatronymic->Text->Length) &&
@@ -235,117 +247,119 @@ System::Void schoolcourseProject::Teachers::buttonChange_Click(System::Object^ s
     }
     int index = dataGridViewTeachers->SelectedRows[0]->Index;
 
-    String^ id_teacherTB = textBoxID->Text->ToString();
+    String^ id_teacher = textBoxID->Text->ToString();
     String^ id_classTB;
     String^ id_subjectTB;
-    String^ id_teacherSG = dataGridViewTeachers->Rows[index]->Cells["ID"]->Value->ToString();
     String^ id_classSG;
     String^ id_subjectSG;
     String^ id_class_teacher;
+    String^ Name = "'" + textBoxName->Text + "'";
+    String^ Surname = "'" + textBoxSurname->Text + "'";
+    String^ Patronymic = "'" + textBoxPatronymic->Text + "'";
+    String^ Classroom = textBoxClassroom->Text;
+    String^ NumberClass = "'" + domainUpDownClasses->Text + "'";
+    String^ Subject = "'" + domainUpDownSubjects->Text + "'";
 
-    if (id_teacherTB != id_teacherSG) {
-        MessageBox::Show("Выбирите одну строку!", "Внимание!");
-        return;
-    }
+    int CountRow = dataGridViewTeachers->Rows->Count - 1;
+    auto Rows = dataGridViewTeachers->Rows;
 
+    for (int i = 0; i < CountRow; i++)
+        if (Rows[i]->Cells["NameTeacher"]->Value->ToString() == textBoxName->Text)
+            if (Rows[i]->Cells["SurnameTeacher"]->Value->ToString() == textBoxSurname->Text)
+                if (Rows[i]->Cells["PatronymicTeacher"]->Value->ToString() == textBoxPatronymic->Text)
+                    if (Rows[i]->Cells["Classroom"]->Value->ToString() == textBoxClassroom->Text)
+                        if (Rows[i]->Cells["Class"]->Value->ToString() == domainUpDownClasses->Text)
+                            if (Rows[i]->Cells["Subject"]->Value->ToString() == domainUpDownSubjects->Text)
+                            {
+                                MessageBox::Show("Такая запись уже есть!", "Внимание!");
+                                return;
+                            }
     //подключение к БД
-    String^ connectionString = "provider=Microsoft.ACE.OLEDB.16.0;Data Source=school.accdb"; //строка подключения
+    String^ connectionString = StringConnection(); //строка подключения
     OleDbConnection^ dbConnection = gcnew OleDbConnection(connectionString);
 
     dbConnection->Open();//открываем соединение
     
+    String^ TABLE = "Teacher";
+    String^ SET =
+        "name_teacher = " + Name +
+        ", surname_teacher = " + Surname +
+        ", patronymic_teacher = " + Patronymic +
+        ", classroom = " + Classroom;
+    String^ WHERE = "id_teacher = " + id_teacher;
+    String^ SELECT;
+    String^ FROM;
+
      //запрос на обновление таблицы
-    String^ query =
-        "UPDATE Teacher " +
-        "SET name_teacher = '" + textBoxName->Text + "', " +
-        "surname_teacher = '" + textBoxSurname->Text + "', " +
-        "patronymic_teacher = '" + textBoxPatronymic->Text + "', " +
-        "classroom = " + textBoxClassroom->Text +" "+
-        "WHERE id_teacher = " + id_teacherSG + ";";
-    
-    OleDbCommand^ dbCommand = gcnew OleDbCommand(query, dbConnection);
-    dbCommand->ExecuteNonQuery();
+    if (!UpdateRow(dbConnection, TABLE, SET, WHERE)) {
+        MessageBox::Show("Ошибка изменения учителя!", "Внимание!");
+        dbConnection->Close();
+        return;
+    }
 
     /*-----------------------------НА КОТОРЫЙ ПРОИСХОДИТ ЗАМЕНА -----------------------------------*/
 
     //запрос для класса НА КОТОРЫЙ ПРОИСХОДИТ ЗАМЕНА 
     
-        dbCommand->CommandText = "SELECT id_class FROM Class WHERE number_class LIKE '" + domainUpDownClasses->Text + "' ;"; //делаем запрос для нахождение id класса
-        auto dbReaderClass = dbCommand->ExecuteReader();
+    SELECT = "id_class";
+    FROM = "Class";
+    WHERE = "number_class LIKE " + NumberClass;
 
-    //читаем класс
-        dbReaderClass->Read();
-        id_classTB = dbReaderClass[0]->ToString();
-        dbReaderClass->Close();
+    id_classTB = SelectID(dbConnection, SELECT, FROM, WHERE);
     
     //меняем команду на предмет НА КОТОРЫЙ ПРОИСХОДИТ ЗАМЕНА
     
-        dbCommand->CommandText = "SELECT id_subject FROM Subject WHERE name_subject LIKE '" + domainUpDownSubjects->Text + "' ;"; //делаем запрос для нахождение id класса
-        auto dbReaderSubject = dbCommand->ExecuteReader();
+    SELECT = "id_subject";
+    FROM = "Subject";
+    WHERE = "name_subject LIKE " + Subject;
 
-    //читаем предмет
-        dbReaderSubject->Read();
-        id_subjectTB = dbReaderSubject[0]->ToString();
-        dbReaderSubject->Close();
+    id_subjectTB = SelectID(dbConnection, SELECT, FROM, WHERE);
     
   /*----------------------КОТОРЫЙ МЕНЯЕМ----------------------------*/
 
-    dbCommand->CommandText = "SELECT id_class FROM Class WHERE number_class LIKE '" + dataGridViewTeachers->Rows[index]->Cells["Class"]->Value->ToString() + "' ;"; //делаем запрос для нахождение id класса
-    dbReaderClass = dbCommand->ExecuteReader();
+    SELECT = "id_class";
+    FROM = "Class";
+    WHERE = "number_class LIKE " + dataGridViewTeachers->Rows[index]->Cells["Class"]->Value->ToString();
 
-    //читаем класс
-    if (dbReaderClass->HasRows)
-    {
-        dbReaderClass->Read();
-        id_classSG = dbReaderClass[0]->ToString();
-        dbReaderClass->Close();
-    }
-    else 
-    {
-        id_classSG = "0";
-    }
+    id_classSG = SelectID(dbConnection, SELECT, FROM, WHERE);
+
 
     //меняем команду на предмет КОТОРЫЙ МЕНЯЕМ
+    
+    SELECT = "id_subject";
+    FROM = "Subject";
+    WHERE = "name_subject LIKE " + dataGridViewTeachers->Rows[index]->Cells["Subject"]->Value->ToString();
 
-    dbCommand->CommandText = "SELECT id_subject FROM Subject WHERE name_subject LIKE '" + dataGridViewTeachers->Rows[index]->Cells["Subject"]->Value->ToString() + "' ;"; //делаем запрос для нахождение id класса
-    dbReaderSubject = dbCommand->ExecuteReader();
+    id_subjectSG = SelectID(dbConnection, SELECT, FROM, WHERE);
 
-    //читаем предмет
-    if (dbReaderSubject->HasRows)
-    {
-        dbReaderSubject->Read();
-        id_subjectSG = dbReaderSubject[0]->ToString();
-        dbReaderSubject->Close();
-    }
-    else
-    {
-        id_subjectSG = "0";
-    }
-    //Ищем id строки которую нужно изменить
 
-    dbCommand->CommandText = "SELECT id_class_teacher " +
-        "FROM Class_to_teacher " +
-        "WHERE id_teacher = " + id_teacherSG + 
-        " AND id_class = " + id_classSG + 
-        " AND id_subject = " + id_subjectSG + ";";
-    auto dbReaderClassTeacher = dbCommand->ExecuteReader();
+    /*-----------------------------------Ищем id строки которую нужно изменить-------------------------------------*/
 
-    dbReaderClassTeacher->Read();
-    id_class_teacher = dbReaderClassTeacher[0]->ToString();
-    dbReaderClassTeacher->Close();
+    SELECT = "id_class_teacher";
+    FROM = "Class_to_teacher";
+    WHERE = 
+        "id_teacher = " + id_teacher +
+        " AND id_class = "+id_classSG +
+        " AND id_subject = " + id_subjectSG;
+    
+    id_class_teacher = SelectID(dbConnection, SELECT, FROM, WHERE);;
 
     //Обновляем строку
-    dbCommand->CommandText =
-        "UPDATE Class_to_teacher " +
-        " SET id_class = " + id_classTB + ", id_subject = " + id_subjectTB +
-        " WHERE id_class_teacher = " + id_class_teacher + ";";
 
-    dbCommand->ExecuteNonQuery();
+    TABLE = "Class_to_teacher";
+    SET = "id_class = " + id_classTB +
+        ", id_subject = " + id_subjectTB;
+    WHERE = "id_class_teacher = " + id_class_teacher;
+
+    if (!UpdateRow(dbConnection, TABLE, SET, WHERE)) {
+        MessageBox::Show("Ошибка изменения предмета!", "Внимание!");
+        dbConnection->Close();
+        return;
+    }
     //Закрываем соединение
     dbConnection->Close();
 
     //Обновляем таблицу
-    dataGridViewTeachers->Rows->Clear();
     Teachers_Load(nullptr,nullptr);
 
     return System::Void();
@@ -360,33 +374,35 @@ System::Void schoolcourseProject::Teachers::buttonDelete_Click(System::Object^ s
         return;
     }
 
-    String^ connectionString = "provider=Microsoft.ACE.OLEDB.16.0;Data Source=school.accdb"; //строка подключения
+    String^ id_teacher = textBoxID->Text->ToString();
+    String^ NumberClass = "'" + domainUpDownClasses->Text + "'";
+    String^ Subject = "'" + domainUpDownSubjects->Text + "'";
+
+    String^ connectionString = StringConnection(); //строка подключения
     OleDbConnection^ dbConnection = gcnew OleDbConnection(connectionString);
 
     dbConnection->Open();
 
-    String^ query =
-        "DELETE FROM Class_to_teacher WHERE id_teacher =" + textBoxID->Text + " " +
-        " AND id_class IN (SELECT id_class FROM Class WHERE number_class LIKE '" + domainUpDownClasses->Text->ToString() + "') " +
-        " AND id_subject IN(SELECT id_subject FROM Subject WHERE name_subject LIKE '" + domainUpDownSubjects->Text->ToString() + "');";
-    OleDbCommand^ dbCommand = gcnew OleDbCommand(query, dbConnection);
+    String^ FROM = "Class_to_teacher";
+    String^ WHERE = "id_teacher = " + id_teacher + 
+        " AND id_class IN (SELECT id_class FROM Class WHERE number_class LIKE " + NumberClass + ")" +
+        " AND id_subject IN(SELECT id_subject FROM Subject WHERE name_subject LIKE " + Subject + ")";
 
-    if (dbCommand->ExecuteNonQuery() != 1)
+    if (!DeleteRow(dbConnection, FROM, WHERE))
     {
         MessageBox::Show("Ошибка удаления информации об учителе");
         dbConnection->Close();
         return;
     }
 
+    FROM = "Teacher";
+    WHERE = "id_teacher NOT IN(SELECT id_teacher FROM Class_to_teacher) AND id_teacher = " + id_teacher;
 
-    dbCommand->CommandText="DELETE FROM Teacher WHERE id_teacher =" + textBoxID->Text +" " +
-        " AND id_teacher NOT IN(SELECT id_teacher FROM Class_to_teacher) ";
-    dbCommand->ExecuteNonQuery();
+    DeleteRow(dbConnection, FROM, WHERE);
 
     MessageBox::Show("Запись успешно удалена", "Внимание!");
 
     //обновляем записи в таблица
-    dataGridViewTeachers->Rows->Clear();
     Teachers_Load(nullptr, nullptr);
     ClearTextBoxTeachers();
 
@@ -394,88 +410,72 @@ System::Void schoolcourseProject::Teachers::buttonDelete_Click(System::Object^ s
     return System::Void();
 }
 
+/*-------------------------------СОБЫТИЯ УПРАВЛЕНИЯ ПОВЕДЕНИЕМ ФОРМЫ----------------------------------------*/
+
 System::Void schoolcourseProject::Teachers::Teachers_Load(System::Object^ sender, System::EventArgs^ e)
 {
+    dataGridViewTeachers->Rows->Clear();
+
     //подключение к БД
-    String^ connectionString = "provider=Microsoft.ACE.OLEDB.16.0;Data Source=school.accdb"; //строка подключения
+    String^ connectionString = StringConnection(); //строка подключения
     OleDbConnection^ dbConnection = gcnew OleDbConnection(connectionString);
 
     dbConnection->Open();//открываем соединение
+    
+    String^ SELECT = "Teacher.id_teacher, surname_teacher, name_teacher, patronymic_teacher, name_subject, classroom, number_class";
+    String^ FROM = 
+        "((Teacher "+
+        "LEFT JOIN Class_to_teacher ON Teacher.id_teacher = Class_to_teacher.id_teacher) "+
+        "LEFT JOIN Subject  ON Subject.id_subject = Class_to_teacher.id_subject) "+
+        "LEFT JOIN Class ON Class.id_class = Class_to_teacher.id_class";
+    String^ ORDER_BY = "surname_teacher, name_teacher";
 
+    OleDbDataReader^ dbReader = SelectRow(dbConnection, SELECT, FROM, nullptr, ORDER_BY); //вызов предыдущей команды
 
-    String^ query = 
-        "SELECT "+
-        "Teacher.id_teacher, "+
-        "surname_teacher, "+
-        "name_teacher, "+ 
-        "patronymic_teacher, "+
-        "name_subject, "+
-        "classroom, "+
-        "number_class "+
-        "FROM "+
-        "( "+
-            "( "+
-                "( "+
-                    "Class_to_teacher "+
-                    "INNER JOIN Teacher ON Teacher.id_teacher = Class_to_teacher.id_teacher "+
-                    ") "+ 
-                "LEFT JOIN Class ON Class_to_teacher.id_class = Class.id_class "+
-                ") "+
-            "INNER JOIN Subject ON Subject.id_subject = Class_to_teacher.id_subject "+
-        "); "; //делаем запрос
-    OleDbCommand^ dbCommand = gcnew OleDbCommand(query, dbConnection);
-
-    OleDbDataReader^ dbReaderTeacher = dbCommand->ExecuteReader(); //вызов предыдущей команды
-
-    while (dbReaderTeacher->Read())
+    while (dbReader->Read())
     {
         dataGridViewTeachers->Rows->Add(
-            dbReaderTeacher[0],
-            dbReaderTeacher[1],
-            dbReaderTeacher[2],
-            dbReaderTeacher[3],
-            dbReaderTeacher[4],
-            dbReaderTeacher[5],
-            dbReaderTeacher[6]);//вносим строки в таблицу
+            dbReader[0],
+            dbReader[1],
+            dbReader[2],
+            dbReader[3],
+            dbReader[4],
+            dbReader[5],
+            dbReader[6]);//вносим строки в таблицу
     }
 
     //закрываем соединения
-    dbReaderTeacher->Close();
+    dbReader->Close();
 
     if (domainUpDownSubjects->Items->Count == 1)
     {
         //Запрос на выборку всех предмеов
-        dbCommand->CommandText = "SELECT name_subject FROM Subject";
-        auto dbReaderSubject = dbCommand->ExecuteReader();
+        SELECT = "name_subject";
+        FROM = "Subject";
+        
+        dbReader = SelectRow(dbConnection, SELECT, FROM);
 
-        while (dbReaderSubject->Read())
+        while (dbReader->Read())
         {
-            domainUpDownSubjects->Items->Add(dbReaderSubject[0]->ToString());
+            domainUpDownSubjects->Items->Add(dbReader[0]->ToString());
         }
 
         //закрываем соединения
-        dbReaderSubject->Close();
+        dbReader->Close();
     }
 
     if (domainUpDownClasses->Items->Count == 1)
     {
-        dbCommand->CommandText = "SELECT number_class FROM Class ORDER BY 1"; //делаем запрос
+        SELECT = "number_class";
+        FROM = "Class";
 
-        //считываем данные 
-        auto dbReaderClass = dbCommand->ExecuteReader();
+        dbReader = SelectRow(dbConnection, SELECT, FROM);
 
-        if (!dbReaderClass->HasRows)
+        while (dbReader->Read())
         {
-            MessageBox::Show("Ошибка чтения!", "Внимание!");
-            dbConnection->Close();//закрываем соединение
-            return;
+            domainUpDownClasses->Items->Add(dbReader[0]);//записываем данные из бд д
         }
-
-        while (dbReaderClass->Read())
-        {
-            domainUpDownClasses->Items->Add(dbReaderClass[0]);//записываем данные из бд д
-        }
-        dbReaderClass->Close();
+        dbReader->Close();
     }
  
 
@@ -489,9 +489,8 @@ System::Void schoolcourseProject::Teachers::FillingTextBoxTeachers(System::Objec
 {
     //проверяем выбранные строки
     if (dataGridViewTeachers->SelectedRows->Count == 0)
-    {
         return;
-    }
+    
 
     int index = dataGridViewTeachers->SelectedRows[0]->Index; //берем индекс первой выбранной строки
 
@@ -520,6 +519,9 @@ System::Void schoolcourseProject::Teachers::ClearTextBoxTeachers()
     textBoxName->Text = "";
     textBoxPatronymic->Text = "";
     textBoxClassroom->Text = "";
+
+    domainUpDownClasses->SelectedIndex = 0;
+    domainUpDownSubjects->SelectedIndex = 0;
 
     return System::Void();
 }

@@ -41,12 +41,12 @@ namespace schoolcourseProject {
 
 
 
-	private: System::Windows::Forms::TextBox^ textBoxSurname;
+
 
 	private: System::Windows::Forms::Label^ label1;
-	private: System::Windows::Forms::TextBox^ textBoxName;
 
-	private: System::Windows::Forms::Label^ label2;
+
+
 	private: System::Windows::Forms::DomainUpDown^ domainUpDownClasses;
 
 
@@ -68,7 +68,8 @@ namespace schoolcourseProject {
 
 
 	private: System::Windows::Forms::Label^ label3;
-	private: System::Windows::Forms::DomainUpDown^ domainUpDownSubject;
+	private: System::Windows::Forms::DomainUpDown^ domainUpDownSubjects;
+
 
 
 
@@ -77,7 +78,7 @@ namespace schoolcourseProject {
 
 
 	private: System::Windows::Forms::Label^ label5;
-	private: System::Windows::Forms::DomainUpDown^ domainUpDownMark;
+
 
 
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ PupilClass;
@@ -95,6 +96,12 @@ namespace schoolcourseProject {
 	private: System::Windows::Forms::Button^ buttonTeachers;
 	private: System::Windows::Forms::Button^ buttonPupils;
 	private: System::Windows::Forms::Button^ buttonExit;
+	private: System::Windows::Forms::TextBox^ textBoxMark;
+
+	private: System::Windows::Forms::DomainUpDown^ domainUpDownPupil;
+	private: System::Windows::Forms::Label^ label2;
+	private: System::Windows::Forms::TextBox^ textBoxID;
+
 
 
 
@@ -138,20 +145,20 @@ namespace schoolcourseProject {
 			this->NameStudent = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Subject = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Mark = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->textBoxSurname = (gcnew System::Windows::Forms::TextBox());
 			this->label1 = (gcnew System::Windows::Forms::Label());
-			this->textBoxName = (gcnew System::Windows::Forms::TextBox());
-			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->domainUpDownClasses = (gcnew System::Windows::Forms::DomainUpDown());
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->buttonAdd = (gcnew System::Windows::Forms::Button());
 			this->buttonChange = (gcnew System::Windows::Forms::Button());
 			this->buttonDelete = (gcnew System::Windows::Forms::Button());
 			this->label3 = (gcnew System::Windows::Forms::Label());
-			this->domainUpDownSubject = (gcnew System::Windows::Forms::DomainUpDown());
+			this->domainUpDownSubjects = (gcnew System::Windows::Forms::DomainUpDown());
 			this->label5 = (gcnew System::Windows::Forms::Label());
-			this->domainUpDownMark = (gcnew System::Windows::Forms::DomainUpDown());
 			this->buttonExit = (gcnew System::Windows::Forms::Button());
+			this->textBoxMark = (gcnew System::Windows::Forms::TextBox());
+			this->domainUpDownPupil = (gcnew System::Windows::Forms::DomainUpDown());
+			this->label2 = (gcnew System::Windows::Forms::Label());
+			this->textBoxID = (gcnew System::Windows::Forms::TextBox());
 			this->panel1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridViewMarks))->BeginInit();
 			this->SuspendLayout();
@@ -183,7 +190,7 @@ namespace schoolcourseProject {
 			this->buttonSubjects->FlatAppearance->BorderColor = System::Drawing::SystemColors::InactiveCaption;
 			this->buttonSubjects->FlatAppearance->BorderSize = 0;
 			this->buttonSubjects->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->buttonSubjects->Font = (gcnew System::Drawing::Font(L"Inter", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->buttonSubjects->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->buttonSubjects->ForeColor = System::Drawing::SystemColors::InactiveCaption;
 			this->buttonSubjects->Location = System::Drawing::Point(2, 174);
@@ -205,7 +212,7 @@ namespace schoolcourseProject {
 			this->buttonProgress->FlatAppearance->BorderColor = System::Drawing::SystemColors::InactiveCaption;
 			this->buttonProgress->FlatAppearance->BorderSize = 0;
 			this->buttonProgress->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->buttonProgress->Font = (gcnew System::Drawing::Font(L"Inter", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->buttonProgress->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->buttonProgress->ForeColor = System::Drawing::SystemColors::InactiveCaption;
 			this->buttonProgress->Location = System::Drawing::Point(1, 307);
@@ -227,8 +234,8 @@ namespace schoolcourseProject {
 			this->buttonProgressClasses->FlatAppearance->BorderColor = System::Drawing::SystemColors::InactiveCaption;
 			this->buttonProgressClasses->FlatAppearance->BorderSize = 0;
 			this->buttonProgressClasses->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->buttonProgressClasses->Font = (gcnew System::Drawing::Font(L"Inter", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(204)));
+			this->buttonProgressClasses->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(204)));
 			this->buttonProgressClasses->ForeColor = System::Drawing::SystemColors::InactiveCaption;
 			this->buttonProgressClasses->Location = System::Drawing::Point(-1, 442);
 			this->buttonProgressClasses->Margin = System::Windows::Forms::Padding(0);
@@ -249,8 +256,8 @@ namespace schoolcourseProject {
 			this->buttonProgressSubjects->FlatAppearance->BorderColor = System::Drawing::SystemColors::InactiveCaption;
 			this->buttonProgressSubjects->FlatAppearance->BorderSize = 0;
 			this->buttonProgressSubjects->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->buttonProgressSubjects->Font = (gcnew System::Drawing::Font(L"Inter", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(204)));
+			this->buttonProgressSubjects->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(204)));
 			this->buttonProgressSubjects->ForeColor = System::Drawing::SystemColors::InactiveCaption;
 			this->buttonProgressSubjects->Location = System::Drawing::Point(-3, 487);
 			this->buttonProgressSubjects->Margin = System::Windows::Forms::Padding(0);
@@ -271,8 +278,8 @@ namespace schoolcourseProject {
 			this->buttonProgressPupils->FlatAppearance->BorderColor = System::Drawing::SystemColors::InactiveCaption;
 			this->buttonProgressPupils->FlatAppearance->BorderSize = 0;
 			this->buttonProgressPupils->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->buttonProgressPupils->Font = (gcnew System::Drawing::Font(L"Inter", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(204)));
+			this->buttonProgressPupils->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(204)));
 			this->buttonProgressPupils->ForeColor = System::Drawing::SystemColors::InactiveCaption;
 			this->buttonProgressPupils->Location = System::Drawing::Point(-1, 397);
 			this->buttonProgressPupils->Margin = System::Windows::Forms::Padding(0);
@@ -293,8 +300,8 @@ namespace schoolcourseProject {
 			this->buttonProgressTeachers->FlatAppearance->BorderColor = System::Drawing::SystemColors::InactiveCaption;
 			this->buttonProgressTeachers->FlatAppearance->BorderSize = 0;
 			this->buttonProgressTeachers->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->buttonProgressTeachers->Font = (gcnew System::Drawing::Font(L"Inter", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(204)));
+			this->buttonProgressTeachers->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(204)));
 			this->buttonProgressTeachers->ForeColor = System::Drawing::SystemColors::InactiveCaption;
 			this->buttonProgressTeachers->Location = System::Drawing::Point(-1, 352);
 			this->buttonProgressTeachers->Margin = System::Windows::Forms::Padding(0);
@@ -315,7 +322,7 @@ namespace schoolcourseProject {
 			this->buttonMarks->FlatAppearance->BorderColor = System::Drawing::SystemColors::InactiveCaption;
 			this->buttonMarks->FlatAppearance->BorderSize = 0;
 			this->buttonMarks->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->buttonMarks->Font = (gcnew System::Drawing::Font(L"Inter", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->buttonMarks->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->buttonMarks->ForeColor = System::Drawing::SystemColors::InactiveCaption;
 			this->buttonMarks->Location = System::Drawing::Point(-1, 264);
@@ -337,7 +344,7 @@ namespace schoolcourseProject {
 			this->buttonTeachers->FlatAppearance->BorderColor = System::Drawing::SystemColors::InactiveCaption;
 			this->buttonTeachers->FlatAppearance->BorderSize = 0;
 			this->buttonTeachers->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->buttonTeachers->Font = (gcnew System::Drawing::Font(L"Inter", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->buttonTeachers->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->buttonTeachers->ForeColor = System::Drawing::SystemColors::InactiveCaption;
 			this->buttonTeachers->Location = System::Drawing::Point(2, 219);
@@ -359,7 +366,7 @@ namespace schoolcourseProject {
 			this->buttonPupils->FlatAppearance->BorderColor = System::Drawing::SystemColors::InactiveCaption;
 			this->buttonPupils->FlatAppearance->BorderSize = 0;
 			this->buttonPupils->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->buttonPupils->Font = (gcnew System::Drawing::Font(L"Inter", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->buttonPupils->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->buttonPupils->ForeColor = System::Drawing::SystemColors::InactiveCaption;
 			this->buttonPupils->Location = System::Drawing::Point(4, 130);
@@ -381,12 +388,12 @@ namespace schoolcourseProject {
 				this->PupilClass,
 					this->SurnameStudent, this->NameStudent, this->Subject, this->Mark
 			});
-			this->dataGridViewMarks->Location = System::Drawing::Point(445, 74);
+			this->dataGridViewMarks->Location = System::Drawing::Point(445, 51);
 			this->dataGridViewMarks->Margin = System::Windows::Forms::Padding(2, 3, 2, 3);
 			this->dataGridViewMarks->Name = L"dataGridViewMarks";
 			this->dataGridViewMarks->RowHeadersWidth = 51;
 			this->dataGridViewMarks->RowTemplate->Height = 24;
-			this->dataGridViewMarks->Size = System::Drawing::Size(606, 567);
+			this->dataGridViewMarks->Size = System::Drawing::Size(606, 590);
 			this->dataGridViewMarks->TabIndex = 1;
 			this->dataGridViewMarks->RowEnter += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &QuarterMarks::FillingTextBoxQuarterMarks);
 			// 
@@ -420,74 +427,40 @@ namespace schoolcourseProject {
 			this->Mark->MinimumWidth = 6;
 			this->Mark->Name = L"Mark";
 			// 
-			// textBoxSurname
-			// 
-			this->textBoxSurname->Font = (gcnew System::Drawing::Font(L"Inter", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(204)));
-			this->textBoxSurname->Location = System::Drawing::Point(266, 159);
-			this->textBoxSurname->Margin = System::Windows::Forms::Padding(2, 3, 2, 3);
-			this->textBoxSurname->Name = L"textBoxSurname";
-			this->textBoxSurname->Size = System::Drawing::Size(151, 26);
-			this->textBoxSurname->TabIndex = 2;
-			// 
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Font = (gcnew System::Drawing::Font(L"Inter", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->label1->Location = System::Drawing::Point(174, 162);
+			this->label1->Location = System::Drawing::Point(173, 201);
 			this->label1->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(85, 20);
+			this->label1->Size = System::Drawing::Size(56, 17);
 			this->label1->TabIndex = 3;
-			this->label1->Text = L"Фамилия";
-			// 
-			// textBoxName
-			// 
-			this->textBoxName->Font = (gcnew System::Drawing::Font(L"Inter", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(204)));
-			this->textBoxName->Location = System::Drawing::Point(266, 208);
-			this->textBoxName->Margin = System::Windows::Forms::Padding(2, 3, 2, 3);
-			this->textBoxName->Name = L"textBoxName";
-			this->textBoxName->Size = System::Drawing::Size(151, 26);
-			this->textBoxName->TabIndex = 4;
-			// 
-			// label2
-			// 
-			this->label2->AutoSize = true;
-			this->label2->Font = (gcnew System::Drawing::Font(L"Inter", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(204)));
-			this->label2->Location = System::Drawing::Point(174, 211);
-			this->label2->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
-			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(45, 20);
-			this->label2->TabIndex = 5;
-			this->label2->Text = L"Имя";
+			this->label1->Text = L"Ученик";
 			// 
 			// domainUpDownClasses
 			// 
-			this->domainUpDownClasses->Font = (gcnew System::Drawing::Font(L"Inter", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->domainUpDownClasses->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->domainUpDownClasses->Items->Add(L"5 А");
-			this->domainUpDownClasses->Items->Add(L"5 Б");
-			this->domainUpDownClasses->Items->Add(L"6 А");
-			this->domainUpDownClasses->Items->Add(L"6 Б");
-			this->domainUpDownClasses->Location = System::Drawing::Point(266, 109);
+			this->domainUpDownClasses->Items->Add(L"Все");
+			this->domainUpDownClasses->Location = System::Drawing::Point(265, 154);
 			this->domainUpDownClasses->Margin = System::Windows::Forms::Padding(2, 3, 2, 3);
 			this->domainUpDownClasses->Name = L"domainUpDownClasses";
 			this->domainUpDownClasses->ReadOnly = true;
-			this->domainUpDownClasses->Size = System::Drawing::Size(150, 26);
+			this->domainUpDownClasses->Size = System::Drawing::Size(150, 21);
 			this->domainUpDownClasses->TabIndex = 8;
+			this->domainUpDownClasses->Text = L"Все";
 			// 
 			// label4
 			// 
 			this->label4->AutoSize = true;
-			this->label4->Font = (gcnew System::Drawing::Font(L"Inter", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->label4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->label4->Location = System::Drawing::Point(174, 109);
+			this->label4->Location = System::Drawing::Point(173, 158);
 			this->label4->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(58, 20);
+			this->label4->Size = System::Drawing::Size(47, 17);
 			this->label4->TabIndex = 9;
 			this->label4->Text = L"Класс";
 			// 
@@ -524,63 +497,39 @@ namespace schoolcourseProject {
 			// label3
 			// 
 			this->label3->AutoSize = true;
-			this->label3->Font = (gcnew System::Drawing::Font(L"Inter", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->label3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->label3->Location = System::Drawing::Point(174, 263);
+			this->label3->Location = System::Drawing::Point(174, 244);
 			this->label3->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(84, 20);
+			this->label3->Size = System::Drawing::Size(66, 17);
 			this->label3->TabIndex = 13;
 			this->label3->Text = L"Предмет";
 			// 
-			// domainUpDownSubject
+			// domainUpDownSubjects
 			// 
-			this->domainUpDownSubject->Font = (gcnew System::Drawing::Font(L"Inter", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(204)));
-			this->domainUpDownSubject->Items->Add(L"Математика");
-			this->domainUpDownSubject->Items->Add(L"Информатика");
-			this->domainUpDownSubject->Items->Add(L"Английский язык");
-			this->domainUpDownSubject->Items->Add(L"Русский язык");
-			this->domainUpDownSubject->Items->Add(L"История");
-			this->domainUpDownSubject->Items->Add(L"Физика");
-			this->domainUpDownSubject->Location = System::Drawing::Point(267, 262);
-			this->domainUpDownSubject->Margin = System::Windows::Forms::Padding(2, 3, 2, 3);
-			this->domainUpDownSubject->Name = L"domainUpDownSubject";
-			this->domainUpDownSubject->ReadOnly = true;
-			this->domainUpDownSubject->Size = System::Drawing::Size(150, 26);
-			this->domainUpDownSubject->TabIndex = 14;
+			this->domainUpDownSubjects->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(204)));
+			this->domainUpDownSubjects->Items->Add(L"Все");
+			this->domainUpDownSubjects->Location = System::Drawing::Point(265, 243);
+			this->domainUpDownSubjects->Margin = System::Windows::Forms::Padding(2, 3, 2, 3);
+			this->domainUpDownSubjects->Name = L"domainUpDownSubjects";
+			this->domainUpDownSubjects->ReadOnly = true;
+			this->domainUpDownSubjects->Size = System::Drawing::Size(150, 21);
+			this->domainUpDownSubjects->TabIndex = 14;
+			this->domainUpDownSubjects->Text = L"Все";
 			// 
 			// label5
 			// 
 			this->label5->AutoSize = true;
-			this->label5->Font = (gcnew System::Drawing::Font(L"Inter", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->label5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->label5->Location = System::Drawing::Point(174, 317);
+			this->label5->Location = System::Drawing::Point(174, 288);
 			this->label5->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(72, 20);
+			this->label5->Size = System::Drawing::Size(58, 17);
 			this->label5->TabIndex = 15;
 			this->label5->Text = L"Оценка";
-			// 
-			// domainUpDownMark
-			// 
-			this->domainUpDownMark->Font = (gcnew System::Drawing::Font(L"Inter", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(204)));
-			this->domainUpDownMark->Items->Add(L"2");
-			this->domainUpDownMark->Items->Add(L"3");
-			this->domainUpDownMark->Items->Add(L"4");
-			this->domainUpDownMark->Items->Add(L"5");
-			this->domainUpDownMark->Items->Add(L"6");
-			this->domainUpDownMark->Items->Add(L"7");
-			this->domainUpDownMark->Items->Add(L"8");
-			this->domainUpDownMark->Items->Add(L"9");
-			this->domainUpDownMark->Items->Add(L"10");
-			this->domainUpDownMark->Location = System::Drawing::Point(267, 316);
-			this->domainUpDownMark->Margin = System::Windows::Forms::Padding(2, 3, 2, 3);
-			this->domainUpDownMark->Name = L"domainUpDownMark";
-			this->domainUpDownMark->ReadOnly = true;
-			this->domainUpDownMark->Size = System::Drawing::Size(150, 26);
-			this->domainUpDownMark->TabIndex = 16;
 			// 
 			// buttonExit
 			// 
@@ -595,30 +544,76 @@ namespace schoolcourseProject {
 			this->buttonExit->UseVisualStyleBackColor = true;
 			this->buttonExit->Click += gcnew System::EventHandler(this, &QuarterMarks::buttonExit_Click);
 			// 
+			// textBoxMark
+			// 
+			this->textBoxMark->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->textBoxMark->Location = System::Drawing::Point(264, 288);
+			this->textBoxMark->Margin = System::Windows::Forms::Padding(2, 3, 2, 3);
+			this->textBoxMark->Name = L"textBoxMark";
+			this->textBoxMark->Size = System::Drawing::Size(151, 21);
+			this->textBoxMark->TabIndex = 4;
+			// 
+			// domainUpDownPupil
+			// 
+			this->domainUpDownPupil->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->domainUpDownPupil->Items->Add(L"Все");
+			this->domainUpDownPupil->Location = System::Drawing::Point(265, 197);
+			this->domainUpDownPupil->Margin = System::Windows::Forms::Padding(2, 3, 2, 3);
+			this->domainUpDownPupil->Name = L"domainUpDownPupil";
+			this->domainUpDownPupil->ReadOnly = true;
+			this->domainUpDownPupil->Size = System::Drawing::Size(150, 21);
+			this->domainUpDownPupil->TabIndex = 21;
+			this->domainUpDownPupil->Text = L"Все";
+			// 
+			// label2
+			// 
+			this->label2->AutoSize = true;
+			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->label2->Location = System::Drawing::Point(173, 74);
+			this->label2->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label2->Name = L"label2";
+			this->label2->Size = System::Drawing::Size(19, 17);
+			this->label2->TabIndex = 23;
+			this->label2->Text = L"id";
+			// 
+			// textBoxID
+			// 
+			this->textBoxID->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->textBoxID->Location = System::Drawing::Point(264, 70);
+			this->textBoxID->Margin = System::Windows::Forms::Padding(2, 3, 2, 3);
+			this->textBoxID->Name = L"textBoxID";
+			this->textBoxID->ReadOnly = true;
+			this->textBoxID->Size = System::Drawing::Size(151, 21);
+			this->textBoxID->TabIndex = 22;
+			// 
 			// QuarterMarks
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(10, 20);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 17);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::SystemColors::ControlLight;
 			this->ClientSize = System::Drawing::Size(1071, 663);
 			this->ControlBox = false;
+			this->Controls->Add(this->label2);
+			this->Controls->Add(this->textBoxID);
+			this->Controls->Add(this->domainUpDownPupil);
 			this->Controls->Add(this->buttonExit);
-			this->Controls->Add(this->domainUpDownMark);
 			this->Controls->Add(this->label5);
-			this->Controls->Add(this->domainUpDownSubject);
+			this->Controls->Add(this->domainUpDownSubjects);
 			this->Controls->Add(this->label3);
 			this->Controls->Add(this->buttonDelete);
 			this->Controls->Add(this->buttonChange);
 			this->Controls->Add(this->buttonAdd);
 			this->Controls->Add(this->label4);
 			this->Controls->Add(this->domainUpDownClasses);
-			this->Controls->Add(this->label2);
-			this->Controls->Add(this->textBoxName);
+			this->Controls->Add(this->textBoxMark);
 			this->Controls->Add(this->label1);
-			this->Controls->Add(this->textBoxSurname);
 			this->Controls->Add(this->dataGridViewMarks);
 			this->Controls->Add(this->panel1);
-			this->Font = (gcnew System::Drawing::Font(L"Inter", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
 			this->Margin = System::Windows::Forms::Padding(3, 4, 3, 4);
@@ -650,5 +645,6 @@ private: System::Void buttonDelete_Click(System::Object^ sender, System::EventAr
 private: System::Void FillingTextBoxQuarterMarks(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e);
 private: System::Void ClearTextBoxQuarterMarks();
 private: System::Void QuarterMarks_Load(System::Object^ sender, System::EventArgs^ e);
+
 };
 }
