@@ -130,6 +130,14 @@ System::Void schoolcourseProject::Teachers::buttonAdd_Click(System::Object^ send
     auto Rows = dataGridViewTeachers->Rows;
 
     for (int i = 0; i < CountRow; i++)
+        if (Rows[i]->Cells["Class"]->Value->ToString() == domainUpDownClasses->Text)
+            if (Rows[i]->Cells["Subject"]->Value->ToString() == domainUpDownSubjects->Text)
+            {
+                MessageBox::Show("У этого класса уже есть учитель\nпо этому предмету","Внимание!");
+                return;
+            }
+
+    for (int i = 0; i < CountRow; i++)
         if (Rows[i]->Cells["NameTeacher"]->Value->ToString() == textBoxName->Text)
             if (Rows[i]->Cells["SurnameTeacher"]->Value->ToString() == textBoxSurname->Text)
                 if (Rows[i]->Cells["PatronymicTeacher"]->Value->ToString() == textBoxPatronymic->Text)
@@ -216,7 +224,6 @@ System::Void schoolcourseProject::Teachers::buttonChange_Click(System::Object^ s
         return;
     }
 
-    
     if (!(textBoxSurname->Text->Length &&
         textBoxName->Text->Length &&
         textBoxPatronymic->Text->Length) &&
@@ -263,6 +270,7 @@ System::Void schoolcourseProject::Teachers::buttonChange_Click(System::Object^ s
     int CountRow = dataGridViewTeachers->Rows->Count - 1;
     auto Rows = dataGridViewTeachers->Rows;
 
+    /*Проверяем есть ли еще такие строки*/
     for (int i = 0; i < CountRow; i++)
         if (Rows[i]->Cells["NameTeacher"]->Value->ToString() == textBoxName->Text)
             if (Rows[i]->Cells["SurnameTeacher"]->Value->ToString() == textBoxSurname->Text)
@@ -296,6 +304,14 @@ System::Void schoolcourseProject::Teachers::buttonChange_Click(System::Object^ s
         dbConnection->Close();
         return;
     }
+
+    if (String::IsNullOrEmpty(dataGridViewTeachers->Rows[index]->Cells["Class"]->Value->ToString()) ||
+        String::IsNullOrEmpty(dataGridViewTeachers->Rows[index]->Cells["Subject"]->Value->ToString()))
+    {
+        buttonAdd_Click(nullptr, nullptr);
+        return;
+    }
+
 
     /*-----------------------------НА КОТОРЫЙ ПРОИСХОДИТ ЗАМЕНА -----------------------------------*/
 
@@ -374,31 +390,41 @@ System::Void schoolcourseProject::Teachers::buttonDelete_Click(System::Object^ s
         return;
     }
 
-    String^ id_teacher = textBoxID->Text->ToString();
+    String^ id_teacher  = textBoxID->Text->ToString();
     String^ NumberClass = "'" + domainUpDownClasses->Text + "'";
-    String^ Subject = "'" + domainUpDownSubjects->Text + "'";
+    String^ Subject     = "'" + domainUpDownSubjects->Text + "'";
 
     String^ connectionString = StringConnection(); //строка подключения
     OleDbConnection^ dbConnection = gcnew OleDbConnection(connectionString);
 
     dbConnection->Open();
 
-    String^ FROM = "Class_to_teacher";
-    String^ WHERE = "id_teacher = " + id_teacher + 
-        " AND id_class IN (SELECT id_class FROM Class WHERE number_class LIKE " + NumberClass + ")" +
-        " AND id_subject IN(SELECT id_subject FROM Subject WHERE name_subject LIKE " + Subject + ")";
+    String^ FROM;
+    String^ WHERE;
+    /*Удаление всех учителей которые не связаны с определенным классом или предметом*/
+    FROM = "Teacher";
+    WHERE = "id_teacher NOT IN(SELECT id_teacher FROM Class_to_teacher) AND id_teacher = " + id_teacher;
 
-    if (!DeleteRow(dbConnection, FROM, WHERE))
-    {
-        MessageBox::Show("Ошибка удаления информации об учителе");
+    if (DeleteRow(dbConnection, FROM, WHERE)) {
+        MessageBox::Show("Учитель полностью удален из БД!");
+        Teachers_Load(nullptr, nullptr);
         dbConnection->Close();
         return;
     }
 
-    FROM = "Teacher";
-    WHERE = "id_teacher NOT IN(SELECT id_teacher FROM Class_to_teacher) AND id_teacher = " + id_teacher;
+    /*Удаление из Class_to_teacher*/
+    FROM = "Class_to_teacher";
+    WHERE = "id_teacher = " + id_teacher +
+        ((NumberClass != "''")?" AND id_class IN (SELECT id_class FROM Class WHERE number_class LIKE " + NumberClass + ")":" AND id_class IS NULL") +
+        ((Subject != "''")?" AND id_subject IN(SELECT id_subject FROM Subject WHERE name_subject LIKE " + Subject + ")":" AND id_subject IS NULL");
 
-    DeleteRow(dbConnection, FROM, WHERE);
+    if (!DeleteRow(dbConnection, FROM, WHERE))
+    {
+        MessageBox::Show("Ошибка удаления информации об учителе");
+        Teachers_Load(nullptr, nullptr);
+        dbConnection->Close();
+        return;
+    }
 
     MessageBox::Show("Запись успешно удалена", "Внимание!");
 
@@ -440,7 +466,7 @@ System::Void schoolcourseProject::Teachers::Teachers_Load(System::Object^ sender
             dbReader[2],
             dbReader[3],
             dbReader[4],
-            dbReader[5],
+            dbReader[5]->ToString(),
             dbReader[6]);//вносим строки в таблицу
     }
 

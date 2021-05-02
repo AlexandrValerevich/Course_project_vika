@@ -101,11 +101,17 @@ namespace schoolcourseProject {
 	private: System::Windows::Forms::DomainUpDown^ domainUpDownPupil;
 	private: System::Windows::Forms::Label^ label2;
 	private: System::Windows::Forms::TextBox^ textBoxID;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ ID;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ NumberClass;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ SurnameStudent;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ NameStudent;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Subject;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Mark;
+
+
+
+
+
 
 
 
@@ -159,6 +165,7 @@ namespace schoolcourseProject {
 			this->domainUpDownPupil = (gcnew System::Windows::Forms::DomainUpDown());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->textBoxID = (gcnew System::Windows::Forms::TextBox());
+			this->ID = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->NumberClass = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->SurnameStudent = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->NameStudent = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
@@ -389,9 +396,9 @@ namespace schoolcourseProject {
 			// 
 			this->dataGridViewMarks->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::Fill;
 			this->dataGridViewMarks->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dataGridViewMarks->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(5) {
-				this->NumberClass,
-					this->SurnameStudent, this->NameStudent, this->Subject, this->Mark
+			this->dataGridViewMarks->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(6) {
+				this->ID,
+					this->NumberClass, this->SurnameStudent, this->NameStudent, this->Subject, this->Mark
 			});
 			this->dataGridViewMarks->Location = System::Drawing::Point(445, 51);
 			this->dataGridViewMarks->Margin = System::Windows::Forms::Padding(2, 3, 2, 3);
@@ -567,6 +574,12 @@ namespace schoolcourseProject {
 			this->textBoxID->ReadOnly = true;
 			this->textBoxID->Size = System::Drawing::Size(151, 21);
 			this->textBoxID->TabIndex = 22;
+			// 
+			// ID
+			// 
+			this->ID->HeaderText = L"id";
+			this->ID->Name = L"ID";
+			this->ID->Visible = false;
 			// 
 			// NumberClass
 			// 
