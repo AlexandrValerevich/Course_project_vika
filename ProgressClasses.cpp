@@ -91,8 +91,61 @@ System::Void schoolcourseProject::ProgressClasses::buttonExit_Click(System::Obje
 /*-------------------------------СОБЫТИЯ УПРАВЛЕНИЯ ПОВЕДЕНИЕМ ФОРМЫ----------------------------------------*/
 
 System::Void schoolcourseProject::ProgressClasses::ProgressClasses_Load(System::Object^ sender, System::EventArgs^ e)
+{ //подключение к БД
+    String^ connectionString = StringConnection(); //строка подключения
+    OleDbConnection^ dbConnection = gcnew OleDbConnection(connectionString);
+
+    dbConnection->Open();//открываем соединение
+
+    /*Запрос на выборку среднего бала предметов*/
+    /*SELECT 
+      Class.id_class, 
+      number_class, 
+      AVG(mark) AS avg_mark 
+    FROM 
+      (
+        Class 
+        INNER JOIN Class_to_teacher ON Class.id_class = Class_to_teacher.id_class
+      ) 
+      INNER JOIN Mark ON Class_to_teacher.id_class_teacher = Mark.id_class_teacher 
+    GROUP BY 
+      Class.id_class, 
+      number_class
+
+    */
+
+    String^ SELECT =
+        "Class.id_class, "+
+        "number_class, "+
+        "AVG(mark) ";
+    String^ FROM =
+        "(Class "+
+            "INNER JOIN Class_to_teacher ON Class.id_class = Class_to_teacher.id_class) "+
+            "INNER JOIN Mark ON Class_to_teacher.id_class_teacher = Mark.id_class_teacher";
+    String^ GROUP_BY =
+        "Class.id_class, "+
+        "number_class";
+
+    OleDbDataReader^ dbReader = SelectRow(dbConnection, SELECT, FROM, nullptr, nullptr, GROUP_BY); //вызов предыдущей команды
+
+    while (dbReader->Read())
+    {
+        dataGridViewAll->Rows->Add(
+            dbReader[0],
+            dbReader[1],
+            dbReader[2]);//вносим строки в таблицу
+    }
+    //закрываем соединения
+    dbReader->Close();
+
+    dbConnection->Close();
+    return System::Void();
+}
+
+System::Void schoolcourseProject::ProgressClasses::domainUpDownSubjects_SelectedItemChanged(System::Object^ sender, System::EventArgs^ e)
 {
     return System::Void();
 }
 
 /*--------------------------------СОБЫТИЯ ОТВЕЧАЮЩИЕ ЗА ВЫБОРКУ ЭЛЕМЕНТОВ----------------------------------------------------*/
+
