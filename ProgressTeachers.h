@@ -37,26 +37,26 @@ namespace schoolcourseProject {
 	private: System::Windows::Forms::Panel^ panel1;
 	private: System::Windows::Forms::DataGridView^ dataGridViewHigh;
 	protected:
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ SurnameTeacher;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ NameTeacher;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ PatronymicTeacher;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Subject;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ AverageMark;
+
+
+
+
+
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::Label^ label2;
 	private: System::Windows::Forms::DataGridView^ dataGridViewLow;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dataGridViewTextBoxColumn1;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dataGridViewTextBoxColumn2;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dataGridViewTextBoxColumn3;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dataGridViewTextBoxColumn4;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dataGridViewTextBoxColumn5;
+
+
+
+
+
 	private: System::Windows::Forms::Label^ label3;
 	private: System::Windows::Forms::DataGridView^ dataGridViewAll;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dataGridViewTextBoxColumn6;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dataGridViewTextBoxColumn7;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dataGridViewTextBoxColumn8;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dataGridViewTextBoxColumn9;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dataGridViewTextBoxColumn10;
+
+
+
+
+
 	private: System::Windows::Forms::Button^ buttonSubjects;
 	private: System::Windows::Forms::Button^ buttonProgress;
 	private: System::Windows::Forms::Button^ buttonProgressClasses;
@@ -67,6 +67,30 @@ namespace schoolcourseProject {
 	private: System::Windows::Forms::Button^ buttonTeachers;
 	private: System::Windows::Forms::Button^ buttonPupils;
 	private: System::Windows::Forms::Button^ buttonExit;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ id_high;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ SurnameTeacher;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ NameTeacher;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ PatronymicTeacher;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Subject;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ AverageMark;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ id_low;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dataGridViewTextBoxColumn1;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dataGridViewTextBoxColumn2;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dataGridViewTextBoxColumn3;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dataGridViewTextBoxColumn4;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dataGridViewTextBoxColumn5;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ id_all;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dataGridViewTextBoxColumn6;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dataGridViewTextBoxColumn7;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dataGridViewTextBoxColumn8;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dataGridViewTextBoxColumn9;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dataGridViewTextBoxColumn10;
+
+
+
+
+
+
 
 	protected:
 
@@ -94,27 +118,30 @@ namespace schoolcourseProject {
 			this->buttonTeachers = (gcnew System::Windows::Forms::Button());
 			this->buttonPupils = (gcnew System::Windows::Forms::Button());
 			this->dataGridViewHigh = (gcnew System::Windows::Forms::DataGridView());
-			this->SurnameTeacher = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->NameTeacher = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->PatronymicTeacher = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Subject = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->AverageMark = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->dataGridViewLow = (gcnew System::Windows::Forms::DataGridView());
-			this->dataGridViewTextBoxColumn1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->dataGridViewTextBoxColumn2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->dataGridViewTextBoxColumn3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->dataGridViewTextBoxColumn4 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->dataGridViewTextBoxColumn5 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->dataGridViewAll = (gcnew System::Windows::Forms::DataGridView());
+			this->buttonExit = (gcnew System::Windows::Forms::Button());
+			this->id_all = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->dataGridViewTextBoxColumn6 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->dataGridViewTextBoxColumn7 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->dataGridViewTextBoxColumn8 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->dataGridViewTextBoxColumn9 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->dataGridViewTextBoxColumn10 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->buttonExit = (gcnew System::Windows::Forms::Button());
+			this->id_high = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->SurnameTeacher = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->NameTeacher = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->PatronymicTeacher = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Subject = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->AverageMark = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->id_low = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->dataGridViewTextBoxColumn1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->dataGridViewTextBoxColumn2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->dataGridViewTextBoxColumn3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->dataGridViewTextBoxColumn4 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->dataGridViewTextBoxColumn5 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->panel1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridViewHigh))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridViewLow))->BeginInit();
@@ -148,7 +175,7 @@ namespace schoolcourseProject {
 			this->buttonSubjects->FlatAppearance->BorderColor = System::Drawing::SystemColors::InactiveCaption;
 			this->buttonSubjects->FlatAppearance->BorderSize = 0;
 			this->buttonSubjects->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->buttonSubjects->Font = (gcnew System::Drawing::Font(L"Inter", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->buttonSubjects->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->buttonSubjects->ForeColor = System::Drawing::SystemColors::InactiveCaption;
 			this->buttonSubjects->Location = System::Drawing::Point(2, 174);
@@ -170,7 +197,7 @@ namespace schoolcourseProject {
 			this->buttonProgress->FlatAppearance->BorderColor = System::Drawing::SystemColors::InactiveCaption;
 			this->buttonProgress->FlatAppearance->BorderSize = 0;
 			this->buttonProgress->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->buttonProgress->Font = (gcnew System::Drawing::Font(L"Inter", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->buttonProgress->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->buttonProgress->ForeColor = System::Drawing::SystemColors::InactiveCaption;
 			this->buttonProgress->Location = System::Drawing::Point(1, 307);
@@ -192,8 +219,8 @@ namespace schoolcourseProject {
 			this->buttonProgressClasses->FlatAppearance->BorderColor = System::Drawing::SystemColors::InactiveCaption;
 			this->buttonProgressClasses->FlatAppearance->BorderSize = 0;
 			this->buttonProgressClasses->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->buttonProgressClasses->Font = (gcnew System::Drawing::Font(L"Inter", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(204)));
+			this->buttonProgressClasses->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(204)));
 			this->buttonProgressClasses->ForeColor = System::Drawing::SystemColors::InactiveCaption;
 			this->buttonProgressClasses->Location = System::Drawing::Point(-1, 442);
 			this->buttonProgressClasses->Margin = System::Windows::Forms::Padding(0);
@@ -214,8 +241,8 @@ namespace schoolcourseProject {
 			this->buttonProgressSubjects->FlatAppearance->BorderColor = System::Drawing::SystemColors::InactiveCaption;
 			this->buttonProgressSubjects->FlatAppearance->BorderSize = 0;
 			this->buttonProgressSubjects->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->buttonProgressSubjects->Font = (gcnew System::Drawing::Font(L"Inter", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(204)));
+			this->buttonProgressSubjects->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(204)));
 			this->buttonProgressSubjects->ForeColor = System::Drawing::SystemColors::InactiveCaption;
 			this->buttonProgressSubjects->Location = System::Drawing::Point(-3, 487);
 			this->buttonProgressSubjects->Margin = System::Windows::Forms::Padding(0);
@@ -236,8 +263,8 @@ namespace schoolcourseProject {
 			this->buttonProgressPupils->FlatAppearance->BorderColor = System::Drawing::SystemColors::InactiveCaption;
 			this->buttonProgressPupils->FlatAppearance->BorderSize = 0;
 			this->buttonProgressPupils->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->buttonProgressPupils->Font = (gcnew System::Drawing::Font(L"Inter", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(204)));
+			this->buttonProgressPupils->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(204)));
 			this->buttonProgressPupils->ForeColor = System::Drawing::SystemColors::InactiveCaption;
 			this->buttonProgressPupils->Location = System::Drawing::Point(-1, 397);
 			this->buttonProgressPupils->Margin = System::Windows::Forms::Padding(0);
@@ -258,8 +285,8 @@ namespace schoolcourseProject {
 			this->buttonProgressTeachers->FlatAppearance->BorderColor = System::Drawing::SystemColors::InactiveCaption;
 			this->buttonProgressTeachers->FlatAppearance->BorderSize = 0;
 			this->buttonProgressTeachers->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->buttonProgressTeachers->Font = (gcnew System::Drawing::Font(L"Inter", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(204)));
+			this->buttonProgressTeachers->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(204)));
 			this->buttonProgressTeachers->ForeColor = System::Drawing::SystemColors::InactiveCaption;
 			this->buttonProgressTeachers->Location = System::Drawing::Point(-1, 352);
 			this->buttonProgressTeachers->Margin = System::Windows::Forms::Padding(0);
@@ -280,7 +307,7 @@ namespace schoolcourseProject {
 			this->buttonMarks->FlatAppearance->BorderColor = System::Drawing::SystemColors::InactiveCaption;
 			this->buttonMarks->FlatAppearance->BorderSize = 0;
 			this->buttonMarks->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->buttonMarks->Font = (gcnew System::Drawing::Font(L"Inter", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->buttonMarks->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->buttonMarks->ForeColor = System::Drawing::SystemColors::InactiveCaption;
 			this->buttonMarks->Location = System::Drawing::Point(-1, 264);
@@ -302,7 +329,7 @@ namespace schoolcourseProject {
 			this->buttonTeachers->FlatAppearance->BorderColor = System::Drawing::SystemColors::InactiveCaption;
 			this->buttonTeachers->FlatAppearance->BorderSize = 0;
 			this->buttonTeachers->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->buttonTeachers->Font = (gcnew System::Drawing::Font(L"Inter", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->buttonTeachers->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->buttonTeachers->ForeColor = System::Drawing::SystemColors::InactiveCaption;
 			this->buttonTeachers->Location = System::Drawing::Point(2, 219);
@@ -324,7 +351,7 @@ namespace schoolcourseProject {
 			this->buttonPupils->FlatAppearance->BorderColor = System::Drawing::SystemColors::InactiveCaption;
 			this->buttonPupils->FlatAppearance->BorderSize = 0;
 			this->buttonPupils->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->buttonPupils->Font = (gcnew System::Drawing::Font(L"Inter", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->buttonPupils->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->buttonPupils->ForeColor = System::Drawing::SystemColors::InactiveCaption;
 			this->buttonPupils->Location = System::Drawing::Point(4, 130);
@@ -342,9 +369,9 @@ namespace schoolcourseProject {
 			// 
 			this->dataGridViewHigh->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::Fill;
 			this->dataGridViewHigh->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dataGridViewHigh->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(5) {
-				this->SurnameTeacher,
-					this->NameTeacher, this->PatronymicTeacher, this->Subject, this->AverageMark
+			this->dataGridViewHigh->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(6) {
+				this->id_high,
+					this->SurnameTeacher, this->NameTeacher, this->PatronymicTeacher, this->Subject, this->AverageMark
 			});
 			this->dataGridViewHigh->Location = System::Drawing::Point(202, 56);
 			this->dataGridViewHigh->Name = L"dataGridViewHigh";
@@ -353,42 +380,12 @@ namespace schoolcourseProject {
 			this->dataGridViewHigh->Size = System::Drawing::Size(836, 88);
 			this->dataGridViewHigh->TabIndex = 1;
 			// 
-			// SurnameTeacher
-			// 
-			this->SurnameTeacher->HeaderText = L"Фамилия";
-			this->SurnameTeacher->MinimumWidth = 6;
-			this->SurnameTeacher->Name = L"SurnameTeacher";
-			// 
-			// NameTeacher
-			// 
-			this->NameTeacher->HeaderText = L"Имя";
-			this->NameTeacher->MinimumWidth = 6;
-			this->NameTeacher->Name = L"NameTeacher";
-			// 
-			// PatronymicTeacher
-			// 
-			this->PatronymicTeacher->HeaderText = L"Отчество";
-			this->PatronymicTeacher->MinimumWidth = 6;
-			this->PatronymicTeacher->Name = L"PatronymicTeacher";
-			// 
-			// Subject
-			// 
-			this->Subject->HeaderText = L"Предмет";
-			this->Subject->MinimumWidth = 6;
-			this->Subject->Name = L"Subject";
-			// 
-			// AverageMark
-			// 
-			this->AverageMark->HeaderText = L"Оценка";
-			this->AverageMark->MinimumWidth = 6;
-			this->AverageMark->Name = L"AverageMark";
-			// 
 			// label1
 			// 
 			this->label1->AutoSize = true;
 			this->label1->Location = System::Drawing::Point(208, 22);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(362, 20);
+			this->label1->Size = System::Drawing::Size(282, 17);
 			this->label1->TabIndex = 2;
 			this->label1->Text = L"Учитель с самой высокой успеваемостью";
 			// 
@@ -397,7 +394,7 @@ namespace schoolcourseProject {
 			this->label2->AutoSize = true;
 			this->label2->Location = System::Drawing::Point(208, 159);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(348, 20);
+			this->label2->Size = System::Drawing::Size(273, 17);
 			this->label2->TabIndex = 3;
 			this->label2->Text = L"Учитель с самой низкой успеваемостью";
 			// 
@@ -405,9 +402,10 @@ namespace schoolcourseProject {
 			// 
 			this->dataGridViewLow->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::Fill;
 			this->dataGridViewLow->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dataGridViewLow->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(5) {
-				this->dataGridViewTextBoxColumn1,
-					this->dataGridViewTextBoxColumn2, this->dataGridViewTextBoxColumn3, this->dataGridViewTextBoxColumn4, this->dataGridViewTextBoxColumn5
+			this->dataGridViewLow->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(6) {
+				this->id_low,
+					this->dataGridViewTextBoxColumn1, this->dataGridViewTextBoxColumn2, this->dataGridViewTextBoxColumn3, this->dataGridViewTextBoxColumn4,
+					this->dataGridViewTextBoxColumn5
 			});
 			this->dataGridViewLow->Location = System::Drawing::Point(202, 196);
 			this->dataGridViewLow->Name = L"dataGridViewLow";
@@ -416,42 +414,12 @@ namespace schoolcourseProject {
 			this->dataGridViewLow->Size = System::Drawing::Size(836, 96);
 			this->dataGridViewLow->TabIndex = 4;
 			// 
-			// dataGridViewTextBoxColumn1
-			// 
-			this->dataGridViewTextBoxColumn1->HeaderText = L"Фамилия";
-			this->dataGridViewTextBoxColumn1->MinimumWidth = 6;
-			this->dataGridViewTextBoxColumn1->Name = L"dataGridViewTextBoxColumn1";
-			// 
-			// dataGridViewTextBoxColumn2
-			// 
-			this->dataGridViewTextBoxColumn2->HeaderText = L"Имя";
-			this->dataGridViewTextBoxColumn2->MinimumWidth = 6;
-			this->dataGridViewTextBoxColumn2->Name = L"dataGridViewTextBoxColumn2";
-			// 
-			// dataGridViewTextBoxColumn3
-			// 
-			this->dataGridViewTextBoxColumn3->HeaderText = L"Отчество";
-			this->dataGridViewTextBoxColumn3->MinimumWidth = 6;
-			this->dataGridViewTextBoxColumn3->Name = L"dataGridViewTextBoxColumn3";
-			// 
-			// dataGridViewTextBoxColumn4
-			// 
-			this->dataGridViewTextBoxColumn4->HeaderText = L"Предмет";
-			this->dataGridViewTextBoxColumn4->MinimumWidth = 6;
-			this->dataGridViewTextBoxColumn4->Name = L"dataGridViewTextBoxColumn4";
-			// 
-			// dataGridViewTextBoxColumn5
-			// 
-			this->dataGridViewTextBoxColumn5->HeaderText = L"Оценка";
-			this->dataGridViewTextBoxColumn5->MinimumWidth = 6;
-			this->dataGridViewTextBoxColumn5->Name = L"dataGridViewTextBoxColumn5";
-			// 
 			// label3
 			// 
 			this->label3->AutoSize = true;
 			this->label3->Location = System::Drawing::Point(212, 311);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(287, 20);
+			this->label3->Size = System::Drawing::Size(223, 17);
 			this->label3->TabIndex = 5;
 			this->label3->Text = L"Успеваемость по всем учителям";
 			// 
@@ -459,9 +427,10 @@ namespace schoolcourseProject {
 			// 
 			this->dataGridViewAll->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::Fill;
 			this->dataGridViewAll->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dataGridViewAll->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(5) {
-				this->dataGridViewTextBoxColumn6,
-					this->dataGridViewTextBoxColumn7, this->dataGridViewTextBoxColumn8, this->dataGridViewTextBoxColumn9, this->dataGridViewTextBoxColumn10
+			this->dataGridViewAll->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(6) {
+				this->id_all,
+					this->dataGridViewTextBoxColumn6, this->dataGridViewTextBoxColumn7, this->dataGridViewTextBoxColumn8, this->dataGridViewTextBoxColumn9,
+					this->dataGridViewTextBoxColumn10
 			});
 			this->dataGridViewAll->Location = System::Drawing::Point(202, 350);
 			this->dataGridViewAll->Name = L"dataGridViewAll";
@@ -469,6 +438,25 @@ namespace schoolcourseProject {
 			this->dataGridViewAll->RowTemplate->Height = 24;
 			this->dataGridViewAll->Size = System::Drawing::Size(836, 214);
 			this->dataGridViewAll->TabIndex = 6;
+			// 
+			// buttonExit
+			// 
+			this->buttonExit->FlatAppearance->BorderSize = 0;
+			this->buttonExit->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->buttonExit->Location = System::Drawing::Point(1039, 0);
+			this->buttonExit->Margin = System::Windows::Forms::Padding(0);
+			this->buttonExit->Name = L"buttonExit";
+			this->buttonExit->Size = System::Drawing::Size(33, 29);
+			this->buttonExit->TabIndex = 21;
+			this->buttonExit->Text = L"x";
+			this->buttonExit->UseVisualStyleBackColor = true;
+			this->buttonExit->Click += gcnew System::EventHandler(this, &ProgressTeachers::buttonExit_Click);
+			// 
+			// id_all
+			// 
+			this->id_all->HeaderText = L"id";
+			this->id_all->Name = L"id_all";
+			this->id_all->Visible = false;
 			// 
 			// dataGridViewTextBoxColumn6
 			// 
@@ -500,18 +488,77 @@ namespace schoolcourseProject {
 			this->dataGridViewTextBoxColumn10->MinimumWidth = 6;
 			this->dataGridViewTextBoxColumn10->Name = L"dataGridViewTextBoxColumn10";
 			// 
-			// buttonExit
+			// id_high
 			// 
-			this->buttonExit->FlatAppearance->BorderSize = 0;
-			this->buttonExit->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->buttonExit->Location = System::Drawing::Point(1039, 0);
-			this->buttonExit->Margin = System::Windows::Forms::Padding(0);
-			this->buttonExit->Name = L"buttonExit";
-			this->buttonExit->Size = System::Drawing::Size(33, 29);
-			this->buttonExit->TabIndex = 21;
-			this->buttonExit->Text = L"x";
-			this->buttonExit->UseVisualStyleBackColor = true;
-			this->buttonExit->Click += gcnew System::EventHandler(this, &ProgressTeachers::buttonExit_Click);
+			this->id_high->HeaderText = L"id";
+			this->id_high->Name = L"id_high";
+			this->id_high->Visible = false;
+			// 
+			// SurnameTeacher
+			// 
+			this->SurnameTeacher->HeaderText = L"Фамилия";
+			this->SurnameTeacher->MinimumWidth = 6;
+			this->SurnameTeacher->Name = L"SurnameTeacher";
+			// 
+			// NameTeacher
+			// 
+			this->NameTeacher->HeaderText = L"Имя";
+			this->NameTeacher->MinimumWidth = 6;
+			this->NameTeacher->Name = L"NameTeacher";
+			// 
+			// PatronymicTeacher
+			// 
+			this->PatronymicTeacher->HeaderText = L"Отчество";
+			this->PatronymicTeacher->MinimumWidth = 6;
+			this->PatronymicTeacher->Name = L"PatronymicTeacher";
+			// 
+			// Subject
+			// 
+			this->Subject->HeaderText = L"Предмет";
+			this->Subject->MinimumWidth = 6;
+			this->Subject->Name = L"Subject";
+			// 
+			// AverageMark
+			// 
+			this->AverageMark->HeaderText = L"Оценка";
+			this->AverageMark->MinimumWidth = 6;
+			this->AverageMark->Name = L"AverageMark";
+			// 
+			// id_low
+			// 
+			this->id_low->HeaderText = L"id";
+			this->id_low->Name = L"id_low";
+			this->id_low->Visible = false;
+			// 
+			// dataGridViewTextBoxColumn1
+			// 
+			this->dataGridViewTextBoxColumn1->HeaderText = L"Фамилия";
+			this->dataGridViewTextBoxColumn1->MinimumWidth = 6;
+			this->dataGridViewTextBoxColumn1->Name = L"dataGridViewTextBoxColumn1";
+			// 
+			// dataGridViewTextBoxColumn2
+			// 
+			this->dataGridViewTextBoxColumn2->HeaderText = L"Имя";
+			this->dataGridViewTextBoxColumn2->MinimumWidth = 6;
+			this->dataGridViewTextBoxColumn2->Name = L"dataGridViewTextBoxColumn2";
+			// 
+			// dataGridViewTextBoxColumn3
+			// 
+			this->dataGridViewTextBoxColumn3->HeaderText = L"Отчество";
+			this->dataGridViewTextBoxColumn3->MinimumWidth = 6;
+			this->dataGridViewTextBoxColumn3->Name = L"dataGridViewTextBoxColumn3";
+			// 
+			// dataGridViewTextBoxColumn4
+			// 
+			this->dataGridViewTextBoxColumn4->HeaderText = L"Предмет";
+			this->dataGridViewTextBoxColumn4->MinimumWidth = 6;
+			this->dataGridViewTextBoxColumn4->Name = L"dataGridViewTextBoxColumn4";
+			// 
+			// dataGridViewTextBoxColumn5
+			// 
+			this->dataGridViewTextBoxColumn5->HeaderText = L"Оценка";
+			this->dataGridViewTextBoxColumn5->MinimumWidth = 6;
+			this->dataGridViewTextBoxColumn5->Name = L"dataGridViewTextBoxColumn5";
 			// 
 			// ProgressTeachers
 			// 
@@ -526,7 +573,7 @@ namespace schoolcourseProject {
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->dataGridViewHigh);
 			this->Controls->Add(this->panel1);
-			this->Font = (gcnew System::Drawing::Font(L"Inter", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
 			this->Margin = System::Windows::Forms::Padding(3, 4, 3, 4);
