@@ -142,10 +142,4 @@ System::Void schoolcourseProject::ProgressClasses::ProgressClasses_Load(System::
     return System::Void();
 }
 
-System::Void schoolcourseProject::ProgressClasses::domainUpDownSubjects_SelectedItemChanged(System::Object^ sender, System::EventArgs^ e)
-{
-    return System::Void();
-}
-
-/*--------------------------------янашрхъ нрбевючыхе гю бшанпйс щкелемрнб----------------------------------------------------*/
 

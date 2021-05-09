@@ -40,8 +40,8 @@ namespace schoolcourseProject {
 
 	private: System::Windows::Forms::Label^ label3;
 
-private: System::Windows::Forms::Label^ label6;
-	private: System::Windows::Forms::DomainUpDown^ domainUpDownSubjects;
+
+
 
 
 private: System::Windows::Forms::DataGridView^ dataGridViewAll;
@@ -100,13 +100,11 @@ private: System::Windows::Forms::Button^ buttonPupils;
 			this->buttonTeachers = (gcnew System::Windows::Forms::Button());
 			this->buttonPupils = (gcnew System::Windows::Forms::Button());
 			this->label3 = (gcnew System::Windows::Forms::Label());
-			this->domainUpDownSubjects = (gcnew System::Windows::Forms::DomainUpDown());
-			this->label6 = (gcnew System::Windows::Forms::Label());
 			this->dataGridViewAll = (gcnew System::Windows::Forms::DataGridView());
-			this->buttonExit = (gcnew System::Windows::Forms::Button());
 			this->id_all = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->dataGridViewTextBoxColumn4 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->dataGridViewTextBoxColumn6 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->buttonExit = (gcnew System::Windows::Forms::Button());
 			this->panel1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridViewAll))->BeginInit();
 			this->SuspendLayout();
@@ -330,36 +328,11 @@ private: System::Windows::Forms::Button^ buttonPupils;
 			// label3
 			// 
 			this->label3->AutoSize = true;
-			this->label3->Location = System::Drawing::Point(187, 22);
+			this->label3->Location = System::Drawing::Point(206, 22);
 			this->label3->Name = L"label3";
 			this->label3->Size = System::Drawing::Size(205, 17);
 			this->label3->TabIndex = 5;
 			this->label3->Text = L"Общая успеваемость классов";
-			// 
-			// domainUpDownSubjects
-			// 
-			this->domainUpDownSubjects->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular,
-				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(204)));
-			this->domainUpDownSubjects->Location = System::Drawing::Point(310, 56);
-			this->domainUpDownSubjects->Margin = System::Windows::Forms::Padding(2, 3, 2, 3);
-			this->domainUpDownSubjects->Name = L"domainUpDownSubjects";
-			this->domainUpDownSubjects->ReadOnly = true;
-			this->domainUpDownSubjects->Size = System::Drawing::Size(150, 21);
-			this->domainUpDownSubjects->TabIndex = 19;
-			this->domainUpDownSubjects->Text = L"Все";
-			this->domainUpDownSubjects->SelectedItemChanged += gcnew System::EventHandler(this, &ProgressClasses::domainUpDownSubjects_SelectedItemChanged);
-			// 
-			// label6
-			// 
-			this->label6->AutoSize = true;
-			this->label6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(204)));
-			this->label6->Location = System::Drawing::Point(206, 57);
-			this->label6->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
-			this->label6->Name = L"label6";
-			this->label6->Size = System::Drawing::Size(66, 17);
-			this->label6->TabIndex = 20;
-			this->label6->Text = L"Предмет";
 			// 
 			// dataGridViewAll
 			// 
@@ -369,25 +342,12 @@ private: System::Windows::Forms::Button^ buttonPupils;
 				this->id_all,
 					this->dataGridViewTextBoxColumn4, this->dataGridViewTextBoxColumn6
 			});
-			this->dataGridViewAll->Location = System::Drawing::Point(202, 94);
+			this->dataGridViewAll->Location = System::Drawing::Point(209, 55);
 			this->dataGridViewAll->Name = L"dataGridViewAll";
 			this->dataGridViewAll->RowHeadersWidth = 51;
 			this->dataGridViewAll->RowTemplate->Height = 24;
-			this->dataGridViewAll->Size = System::Drawing::Size(550, 519);
+			this->dataGridViewAll->Size = System::Drawing::Size(550, 558);
 			this->dataGridViewAll->TabIndex = 22;
-			// 
-			// buttonExit
-			// 
-			this->buttonExit->FlatAppearance->BorderSize = 0;
-			this->buttonExit->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->buttonExit->Location = System::Drawing::Point(1039, 0);
-			this->buttonExit->Margin = System::Windows::Forms::Padding(0);
-			this->buttonExit->Name = L"buttonExit";
-			this->buttonExit->Size = System::Drawing::Size(33, 29);
-			this->buttonExit->TabIndex = 23;
-			this->buttonExit->Text = L"x";
-			this->buttonExit->UseVisualStyleBackColor = true;
-			this->buttonExit->Click += gcnew System::EventHandler(this, &ProgressClasses::buttonExit_Click);
 			// 
 			// id_all
 			// 
@@ -407,6 +367,19 @@ private: System::Windows::Forms::Button^ buttonPupils;
 			this->dataGridViewTextBoxColumn6->MinimumWidth = 6;
 			this->dataGridViewTextBoxColumn6->Name = L"dataGridViewTextBoxColumn6";
 			// 
+			// buttonExit
+			// 
+			this->buttonExit->FlatAppearance->BorderSize = 0;
+			this->buttonExit->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->buttonExit->Location = System::Drawing::Point(1039, 0);
+			this->buttonExit->Margin = System::Windows::Forms::Padding(0);
+			this->buttonExit->Name = L"buttonExit";
+			this->buttonExit->Size = System::Drawing::Size(33, 29);
+			this->buttonExit->TabIndex = 23;
+			this->buttonExit->Text = L"x";
+			this->buttonExit->UseVisualStyleBackColor = true;
+			this->buttonExit->Click += gcnew System::EventHandler(this, &ProgressClasses::buttonExit_Click);
+			// 
 			// ProgressClasses
 			// 
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::None;
@@ -414,8 +387,6 @@ private: System::Windows::Forms::Button^ buttonPupils;
 			this->ClientSize = System::Drawing::Size(1071, 663);
 			this->Controls->Add(this->buttonExit);
 			this->Controls->Add(this->dataGridViewAll);
-			this->Controls->Add(this->label6);
-			this->Controls->Add(this->domainUpDownSubjects);
 			this->Controls->Add(this->label3);
 			this->Controls->Add(this->panel1);
 			this->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
@@ -444,7 +415,5 @@ private: System::Void buttonProgressClasses_Click(System::Object^ sender, System
 private: System::Void buttonProgressSubjects_Click(System::Object^ sender, System::EventArgs^ e);
 private: System::Void buttonExit_Click(System::Object^ sender, System::EventArgs^ e);
 private: System::Void ProgressClasses_Load(System::Object^ sender, System::EventArgs^ e);
-
-private: System::Void domainUpDownSubjects_SelectedItemChanged(System::Object^ sender, System::EventArgs^ e);
 };
 }

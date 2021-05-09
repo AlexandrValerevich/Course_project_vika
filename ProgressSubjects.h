@@ -61,15 +61,15 @@ namespace schoolcourseProject {
 
 
 
-	private: System::Windows::Forms::DataGridView^ dataGridViewHigh;
 
 
 
 
 
 
-	private: System::Windows::Forms::Label^ label1;
-	private: System::Windows::Forms::Label^ label2;
+
+
+
 
 
 
@@ -117,7 +117,6 @@ namespace schoolcourseProject {
 
 
 
-	private: System::IO::FileSystemWatcher^ fileSystemWatcher1;
 
 
 
@@ -129,16 +128,17 @@ namespace schoolcourseProject {
 
 
 
-private: System::Windows::Forms::DataGridViewTextBoxColumn^ SubjectMarks;
-private: System::Windows::Forms::DataGridViewTextBoxColumn^ MarkToSubject;
-private: System::Windows::Forms::DataGridView^ dataGridViewLow;
 
-private: System::Windows::Forms::DataGridViewTextBoxColumn^ dataGridViewTextBoxColumn1;
-private: System::Windows::Forms::DataGridViewTextBoxColumn^ dataGridViewTextBoxColumn2;
+
+
+
+
+
+
 private: System::Windows::Forms::DataGridView^ dataGridViewAll;
 
-private: System::Windows::Forms::DataGridViewTextBoxColumn^ dataGridViewTextBoxColumn3;
-private: System::Windows::Forms::DataGridViewTextBoxColumn^ dataGridViewTextBoxColumn4;
+
+
 
 
 
@@ -158,6 +158,9 @@ private: System::Windows::Forms::Button^ buttonProgressTeachers;
 private: System::Windows::Forms::Button^ buttonMarks;
 private: System::Windows::Forms::Button^ buttonTeachers;
 private: System::Windows::Forms::Button^ buttonPupils;
+private: System::Windows::Forms::DataGridViewTextBoxColumn^ id;
+private: System::Windows::Forms::DataGridViewTextBoxColumn^ dataGridViewTextBoxColumn3;
+private: System::Windows::Forms::DataGridViewTextBoxColumn^ dataGridViewTextBoxColumn4;
 
 
 
@@ -205,24 +208,13 @@ private: System::Windows::Forms::Button^ buttonPupils;
 			this->buttonMarks = (gcnew System::Windows::Forms::Button());
 			this->buttonTeachers = (gcnew System::Windows::Forms::Button());
 			this->buttonPupils = (gcnew System::Windows::Forms::Button());
-			this->dataGridViewHigh = (gcnew System::Windows::Forms::DataGridView());
-			this->SubjectMarks = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->MarkToSubject = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->label1 = (gcnew System::Windows::Forms::Label());
-			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->label3 = (gcnew System::Windows::Forms::Label());
-			this->fileSystemWatcher1 = (gcnew System::IO::FileSystemWatcher());
-			this->dataGridViewLow = (gcnew System::Windows::Forms::DataGridView());
-			this->dataGridViewTextBoxColumn1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->dataGridViewTextBoxColumn2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->dataGridViewAll = (gcnew System::Windows::Forms::DataGridView());
+			this->buttonExit = (gcnew System::Windows::Forms::Button());
+			this->id = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->dataGridViewTextBoxColumn3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->dataGridViewTextBoxColumn4 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->buttonExit = (gcnew System::Windows::Forms::Button());
 			this->panel1->SuspendLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridViewHigh))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->fileSystemWatcher1))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridViewLow))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridViewAll))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -253,7 +245,7 @@ private: System::Windows::Forms::Button^ buttonPupils;
 			this->buttonSubjects->FlatAppearance->BorderColor = System::Drawing::SystemColors::InactiveCaption;
 			this->buttonSubjects->FlatAppearance->BorderSize = 0;
 			this->buttonSubjects->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->buttonSubjects->Font = (gcnew System::Drawing::Font(L"Inter", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->buttonSubjects->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->buttonSubjects->ForeColor = System::Drawing::SystemColors::InactiveCaption;
 			this->buttonSubjects->Location = System::Drawing::Point(2, 174);
@@ -275,7 +267,7 @@ private: System::Windows::Forms::Button^ buttonPupils;
 			this->buttonProgress->FlatAppearance->BorderColor = System::Drawing::SystemColors::InactiveCaption;
 			this->buttonProgress->FlatAppearance->BorderSize = 0;
 			this->buttonProgress->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->buttonProgress->Font = (gcnew System::Drawing::Font(L"Inter", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->buttonProgress->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->buttonProgress->ForeColor = System::Drawing::SystemColors::InactiveCaption;
 			this->buttonProgress->Location = System::Drawing::Point(1, 307);
@@ -296,8 +288,8 @@ private: System::Windows::Forms::Button^ buttonPupils;
 			this->buttonProgressClasses->FlatAppearance->BorderColor = System::Drawing::SystemColors::InactiveCaption;
 			this->buttonProgressClasses->FlatAppearance->BorderSize = 0;
 			this->buttonProgressClasses->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->buttonProgressClasses->Font = (gcnew System::Drawing::Font(L"Inter", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(204)));
+			this->buttonProgressClasses->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(204)));
 			this->buttonProgressClasses->ForeColor = System::Drawing::SystemColors::InactiveCaption;
 			this->buttonProgressClasses->Location = System::Drawing::Point(-1, 442);
 			this->buttonProgressClasses->Margin = System::Windows::Forms::Padding(0);
@@ -318,8 +310,8 @@ private: System::Windows::Forms::Button^ buttonPupils;
 			this->buttonProgressSubjects->FlatAppearance->BorderColor = System::Drawing::SystemColors::InactiveCaption;
 			this->buttonProgressSubjects->FlatAppearance->BorderSize = 0;
 			this->buttonProgressSubjects->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->buttonProgressSubjects->Font = (gcnew System::Drawing::Font(L"Inter", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(204)));
+			this->buttonProgressSubjects->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(204)));
 			this->buttonProgressSubjects->ForeColor = System::Drawing::SystemColors::InactiveCaption;
 			this->buttonProgressSubjects->Location = System::Drawing::Point(-3, 487);
 			this->buttonProgressSubjects->Margin = System::Windows::Forms::Padding(0);
@@ -340,8 +332,8 @@ private: System::Windows::Forms::Button^ buttonPupils;
 			this->buttonProgressPupils->FlatAppearance->BorderColor = System::Drawing::SystemColors::InactiveCaption;
 			this->buttonProgressPupils->FlatAppearance->BorderSize = 0;
 			this->buttonProgressPupils->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->buttonProgressPupils->Font = (gcnew System::Drawing::Font(L"Inter", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(204)));
+			this->buttonProgressPupils->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(204)));
 			this->buttonProgressPupils->ForeColor = System::Drawing::SystemColors::InactiveCaption;
 			this->buttonProgressPupils->Location = System::Drawing::Point(-1, 397);
 			this->buttonProgressPupils->Margin = System::Windows::Forms::Padding(0);
@@ -361,8 +353,8 @@ private: System::Windows::Forms::Button^ buttonPupils;
 			this->buttonProgressTeachers->FlatAppearance->BorderColor = System::Drawing::SystemColors::InactiveCaption;
 			this->buttonProgressTeachers->FlatAppearance->BorderSize = 0;
 			this->buttonProgressTeachers->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->buttonProgressTeachers->Font = (gcnew System::Drawing::Font(L"Inter", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(204)));
+			this->buttonProgressTeachers->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(204)));
 			this->buttonProgressTeachers->ForeColor = System::Drawing::SystemColors::InactiveCaption;
 			this->buttonProgressTeachers->Location = System::Drawing::Point(-1, 352);
 			this->buttonProgressTeachers->Margin = System::Windows::Forms::Padding(0);
@@ -383,7 +375,7 @@ private: System::Windows::Forms::Button^ buttonPupils;
 			this->buttonMarks->FlatAppearance->BorderColor = System::Drawing::SystemColors::InactiveCaption;
 			this->buttonMarks->FlatAppearance->BorderSize = 0;
 			this->buttonMarks->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->buttonMarks->Font = (gcnew System::Drawing::Font(L"Inter", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->buttonMarks->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->buttonMarks->ForeColor = System::Drawing::SystemColors::InactiveCaption;
 			this->buttonMarks->Location = System::Drawing::Point(-1, 264);
@@ -405,7 +397,7 @@ private: System::Windows::Forms::Button^ buttonPupils;
 			this->buttonTeachers->FlatAppearance->BorderColor = System::Drawing::SystemColors::InactiveCaption;
 			this->buttonTeachers->FlatAppearance->BorderSize = 0;
 			this->buttonTeachers->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->buttonTeachers->Font = (gcnew System::Drawing::Font(L"Inter", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->buttonTeachers->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->buttonTeachers->ForeColor = System::Drawing::SystemColors::InactiveCaption;
 			this->buttonTeachers->Location = System::Drawing::Point(2, 219);
@@ -427,7 +419,7 @@ private: System::Windows::Forms::Button^ buttonPupils;
 			this->buttonPupils->FlatAppearance->BorderColor = System::Drawing::SystemColors::InactiveCaption;
 			this->buttonPupils->FlatAppearance->BorderSize = 0;
 			this->buttonPupils->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->buttonPupils->Font = (gcnew System::Drawing::Font(L"Inter", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->buttonPupils->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->buttonPupils->ForeColor = System::Drawing::SystemColors::InactiveCaption;
 			this->buttonPupils->Location = System::Drawing::Point(4, 130);
@@ -441,118 +433,29 @@ private: System::Windows::Forms::Button^ buttonPupils;
 			this->buttonPupils->UseVisualStyleBackColor = false;
 			this->buttonPupils->Click += gcnew System::EventHandler(this, &ProgressSubjects::buttonPupils_Click);
 			// 
-			// dataGridViewHigh
-			// 
-			this->dataGridViewHigh->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::Fill;
-			this->dataGridViewHigh->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dataGridViewHigh->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(2) {
-				this->SubjectMarks,
-					this->MarkToSubject
-			});
-			this->dataGridViewHigh->Location = System::Drawing::Point(206, 99);
-			this->dataGridViewHigh->Name = L"dataGridViewHigh";
-			this->dataGridViewHigh->RowHeadersWidth = 51;
-			this->dataGridViewHigh->RowTemplate->Height = 24;
-			this->dataGridViewHigh->Size = System::Drawing::Size(530, 132);
-			this->dataGridViewHigh->TabIndex = 1;
-			// 
-			// SubjectMarks
-			// 
-			this->SubjectMarks->HeaderText = L"Предмет";
-			this->SubjectMarks->MinimumWidth = 6;
-			this->SubjectMarks->Name = L"SubjectMarks";
-			// 
-			// MarkToSubject
-			// 
-			this->MarkToSubject->HeaderText = L"Оценка";
-			this->MarkToSubject->MinimumWidth = 6;
-			this->MarkToSubject->Name = L"MarkToSubject";
-			// 
-			// label1
-			// 
-			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(202, 66);
-			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(348, 20);
-			this->label1->TabIndex = 2;
-			this->label1->Text = L"Предмет с наивысшим средним баллом";
-			// 
-			// label2
-			// 
-			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(202, 261);
-			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(354, 20);
-			this->label2->TabIndex = 3;
-			this->label2->Text = L"Предмет с самой низкой успеваемостью";
-			// 
 			// label3
 			// 
 			this->label3->AutoSize = true;
-			this->label3->Location = System::Drawing::Point(202, 463);
+			this->label3->Location = System::Drawing::Point(203, 25);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(316, 20);
+			this->label3->Size = System::Drawing::Size(246, 17);
 			this->label3->TabIndex = 5;
 			this->label3->Text = L"Общая успеваемость по предметам";
-			// 
-			// fileSystemWatcher1
-			// 
-			this->fileSystemWatcher1->EnableRaisingEvents = true;
-			this->fileSystemWatcher1->SynchronizingObject = this;
-			// 
-			// dataGridViewLow
-			// 
-			this->dataGridViewLow->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::Fill;
-			this->dataGridViewLow->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dataGridViewLow->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(2) {
-				this->dataGridViewTextBoxColumn1,
-					this->dataGridViewTextBoxColumn2
-			});
-			this->dataGridViewLow->Location = System::Drawing::Point(206, 301);
-			this->dataGridViewLow->Name = L"dataGridViewLow";
-			this->dataGridViewLow->RowHeadersWidth = 51;
-			this->dataGridViewLow->RowTemplate->Height = 24;
-			this->dataGridViewLow->Size = System::Drawing::Size(530, 130);
-			this->dataGridViewLow->TabIndex = 23;
-			// 
-			// dataGridViewTextBoxColumn1
-			// 
-			this->dataGridViewTextBoxColumn1->HeaderText = L"Предмет";
-			this->dataGridViewTextBoxColumn1->MinimumWidth = 6;
-			this->dataGridViewTextBoxColumn1->Name = L"dataGridViewTextBoxColumn1";
-			// 
-			// dataGridViewTextBoxColumn2
-			// 
-			this->dataGridViewTextBoxColumn2->HeaderText = L"Оценка";
-			this->dataGridViewTextBoxColumn2->MinimumWidth = 6;
-			this->dataGridViewTextBoxColumn2->Name = L"dataGridViewTextBoxColumn2";
 			// 
 			// dataGridViewAll
 			// 
 			this->dataGridViewAll->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::Fill;
 			this->dataGridViewAll->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dataGridViewAll->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(2) {
-				this->dataGridViewTextBoxColumn3,
+			this->dataGridViewAll->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(3) {
+				this->id, this->dataGridViewTextBoxColumn3,
 					this->dataGridViewTextBoxColumn4
 			});
-			this->dataGridViewAll->Location = System::Drawing::Point(206, 501);
+			this->dataGridViewAll->Location = System::Drawing::Point(206, 59);
 			this->dataGridViewAll->Name = L"dataGridViewAll";
 			this->dataGridViewAll->RowHeadersWidth = 51;
 			this->dataGridViewAll->RowTemplate->Height = 24;
-			this->dataGridViewAll->Size = System::Drawing::Size(530, 128);
+			this->dataGridViewAll->Size = System::Drawing::Size(530, 570);
 			this->dataGridViewAll->TabIndex = 24;
-			// 
-			// dataGridViewTextBoxColumn3
-			// 
-			this->dataGridViewTextBoxColumn3->HeaderText = L"Предмет";
-			this->dataGridViewTextBoxColumn3->MinimumWidth = 6;
-			this->dataGridViewTextBoxColumn3->Name = L"dataGridViewTextBoxColumn3";
-			// 
-			// dataGridViewTextBoxColumn4
-			// 
-			this->dataGridViewTextBoxColumn4->HeaderText = L"Оценка";
-			this->dataGridViewTextBoxColumn4->MinimumWidth = 6;
-			this->dataGridViewTextBoxColumn4->Name = L"dataGridViewTextBoxColumn4";
 			// 
 			// buttonExit
 			// 
@@ -567,6 +470,24 @@ private: System::Windows::Forms::Button^ buttonPupils;
 			this->buttonExit->UseVisualStyleBackColor = true;
 			this->buttonExit->Click += gcnew System::EventHandler(this, &ProgressSubjects::buttonExit_Click);
 			// 
+			// id
+			// 
+			this->id->HeaderText = L"id";
+			this->id->Name = L"id";
+			this->id->Visible = false;
+			// 
+			// dataGridViewTextBoxColumn3
+			// 
+			this->dataGridViewTextBoxColumn3->HeaderText = L"Предмет";
+			this->dataGridViewTextBoxColumn3->MinimumWidth = 6;
+			this->dataGridViewTextBoxColumn3->Name = L"dataGridViewTextBoxColumn3";
+			// 
+			// dataGridViewTextBoxColumn4
+			// 
+			this->dataGridViewTextBoxColumn4->HeaderText = L"Оценка";
+			this->dataGridViewTextBoxColumn4->MinimumWidth = 6;
+			this->dataGridViewTextBoxColumn4->Name = L"dataGridViewTextBoxColumn4";
+			// 
 			// ProgressSubjects
 			// 
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::None;
@@ -574,13 +495,9 @@ private: System::Windows::Forms::Button^ buttonPupils;
 			this->ClientSize = System::Drawing::Size(1071, 663);
 			this->Controls->Add(this->buttonExit);
 			this->Controls->Add(this->dataGridViewAll);
-			this->Controls->Add(this->dataGridViewLow);
 			this->Controls->Add(this->label3);
-			this->Controls->Add(this->label2);
-			this->Controls->Add(this->label1);
-			this->Controls->Add(this->dataGridViewHigh);
 			this->Controls->Add(this->panel1);
-			this->Font = (gcnew System::Drawing::Font(L"Inter", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
 			this->Margin = System::Windows::Forms::Padding(3, 4, 3, 4);
@@ -589,9 +506,6 @@ private: System::Windows::Forms::Button^ buttonPupils;
 			this->Text = L"MyForm";
 			this->Load += gcnew System::EventHandler(this, &ProgressSubjects::ProgressSubjects_Load);
 			this->panel1->ResumeLayout(false);
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridViewHigh))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->fileSystemWatcher1))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridViewLow))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridViewAll))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();

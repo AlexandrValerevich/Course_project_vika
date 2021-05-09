@@ -531,9 +531,18 @@ System::Void schoolcourseProject::Teachers::FillingTextBoxTeachers(System::Objec
     textBoxSurname->Text = dataGridViewTeachers->Rows[index]->Cells[1]->Value->ToString();
     textBoxName->Text = dataGridViewTeachers->Rows[index]->Cells[2]->Value->ToString();
     textBoxPatronymic->Text = dataGridViewTeachers->Rows[index]->Cells[3]->Value->ToString();
-    domainUpDownSubjects->Text = dataGridViewTeachers->Rows[index]->Cells[4]->Value->ToString();
+
+    domainUpDownSubjects->Text = 
+        String::IsNullOrEmpty(dataGridViewTeachers->Rows[index]->Cells[4]->Value->ToString())?
+        domainUpDownSubjects->Items[0]->ToString():
+        dataGridViewTeachers->Rows[index]->Cells[4]->Value->ToString();
+
     textBoxClassroom->Text = dataGridViewTeachers->Rows[index]->Cells[5]->Value->ToString();
-    domainUpDownClasses->Text = dataGridViewTeachers->Rows[index]->Cells[6]->Value->ToString();
+
+    domainUpDownClasses->Text = 
+        String::IsNullOrEmpty(dataGridViewTeachers->Rows[index]->Cells[6]->Value->ToString()) ?
+        domainUpDownClasses->Items[0]->ToString() :
+        dataGridViewTeachers->Rows[index]->Cells[6]->Value->ToString();
 
     return System::Void();
 }
