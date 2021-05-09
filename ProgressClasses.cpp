@@ -6,6 +6,9 @@
 #include "Subjects.h"
 #include "ProgressClasses.h"
 #include "ProgressSubjects.h"
+#include "dbQuery.h"
+
+/*-------------------------------ймнойх оепейкчвемхъ лефдс тнплюлх х ймнойю бшундю----------------------------------------*/
 
 System::Void schoolcourseProject::ProgressClasses::buttonPupils_Click(System::Object^ sender, System::EventArgs^ e)
 {
@@ -85,7 +88,11 @@ System::Void schoolcourseProject::ProgressClasses::buttonExit_Click(System::Obje
     return System::Void();
 }
 
+/*-------------------------------янашрхъ сопюбкемхъ онбедемхел тнплш----------------------------------------*/
+
 System::Void schoolcourseProject::ProgressClasses::ProgressClasses_Load(System::Object^ sender, System::EventArgs^ e)
 {
     return System::Void();
 }
+
+/*--------------------------------янашрхъ нрбевючыхе гю бшанпйс щкелемрнб----------------------------------------------------*/
