@@ -276,11 +276,11 @@ System::Void schoolcourseProject::QuarterMarks::QuarterMarks_Load(System::Object
 
     String^ SELECT = "id_mark, number_class, surname_pupil, name_pupil, name_subject, mark";
     String^ FROM =
-        "(((Pupil "+
-        "INNER JOIN Class ON Pupil.id_class = Class.id_class) "+
-        "INNER JOIN Class_to_teacher ON Class_to_teacher.id_class = Class.id_class) " +
-        "INNER JOIN Subject ON Class_to_teacher.id_subject = Subject.id_subject)"+
-        "INNER JOIN Mark ON Mark.id_pupil = Pupil.id_pupil";
+        "(((Pupil " +
+        "INNER JOIN Class ON Pupil.id_class = Class.id_Class) " +
+        "INNER JOIN Mark ON Pupil.id_pupil = Mark.id_pupil) " +
+        "INNER JOIN Class_to_teacher ON Mark.id_class_teacher = Class_to_teacher.id_class_teacher) " +
+        "INNER JOIN Subject ON Class_to_teacher.id_subject = Subject.id_subject";
     String^ ORDER_BY = "number_class,surname_pupil, name_pupil";
 
     OleDbDataReader^ dbReader = SelectRow(dbConnection, SELECT, FROM, nullptr, ORDER_BY); //вызов предыдущей команды
