@@ -1,4 +1,13 @@
-﻿  Teachers.cpp
-C:\Users\Александр\source\repos\school_courseProject\school_courseProject\Teachers.cpp(121,13): warning C4101: id_class_teacher: неиспользованная локальная переменная
+﻿  ProgressClasses.cpp
+  ProgressPupils.cpp
+  ProgressSubjects.cpp
+  ProgressTeachers.cpp
+  Pupils.cpp
+  QuarterMarks.cpp
+  Source.cpp
+  Subjects.cpp
+  Teachers.cpp
+C:\Users\Александр\source\repos\school_courseProject\school_courseProject\Teachers.cpp(122,13): warning C4101: id_class_teacher: неиспользованная локальная переменная
+  Создание кода...
   dbQuery.obj : обнаружен модуль MSIL; для MSIL последовательная компоновка отключена; выполняется полная компоновка
   school_courseProject.vcxproj -> C:\Users\Александр\source\repos\school_courseProject\Debug\school_courseProject.exe

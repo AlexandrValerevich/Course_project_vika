@@ -7,6 +7,7 @@
 #include "ProgressClasses.h"
 #include "ProgressSubjects.h"
 #include "dbQuery.h"
+#include "About.h"
 
 /*-------------------------------ÊÍÎÏÊÈ ÏÅÐÅÊËÞ×ÅÍÈß ÌÅÆÄÓ ÔÎÐÌÀÌÈ È ÊÍÎÏÊÀ ÂÛÕÎÄÀ----------------------------------------*/
 
@@ -619,5 +620,12 @@ System::Void schoolcourseProject::Teachers::domainUpDownClasses_SelectedItemChan
                 rows[i]->Visible = false;
         }
     }
+    return System::Void();
+}
+
+System::Void schoolcourseProject::Teachers::buttonAbout_Click(System::Object^ sender, System::EventArgs^ e)
+{
+    MyFormAbout^ form = gcnew MyFormAbout(this);
+    form->Show();
     return System::Void();
 }

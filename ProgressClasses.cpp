@@ -7,6 +7,7 @@
 #include "ProgressClasses.h"
 #include "ProgressSubjects.h"
 #include "dbQuery.h"
+#include "About.h"
 
 /*-------------------------------ÊÍÎÏÊÈ ÏÅÐÅÊËÞ×ÅÍÈß ÌÅÆÄÓ ÔÎÐÌÀÌÈ È ÊÍÎÏÊÀ ÂÛÕÎÄÀ----------------------------------------*/
 
@@ -139,6 +140,13 @@ System::Void schoolcourseProject::ProgressClasses::ProgressClasses_Load(System::
     dbReader->Close();
 
     dbConnection->Close();
+    return System::Void();
+}
+
+System::Void schoolcourseProject::ProgressClasses::buttonAbout_Click(System::Object^ sender, System::EventArgs^ e)
+{
+    MyFormAbout^ form = gcnew MyFormAbout(this);
+    form->Show();
     return System::Void();
 }
 

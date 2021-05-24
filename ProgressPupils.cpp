@@ -7,6 +7,7 @@
 #include "ProgressClasses.h"
 #include "ProgressSubjects.h"
 #include "dbQuery.h"
+#include "About.h"
 
 /*-------------------------------ймнойх оепейкчвемхъ лефдс тнплюлх х ймнойю бшундю----------------------------------------*/
 
@@ -254,5 +255,12 @@ System::Void schoolcourseProject::ProgressPupils::domainUpDownAll_SelectedItemCh
         for (int i = 0; i < countRows; i++)
             if (rows[i]->Cells[1]->Value->ToString() != domainUpDownAll->Text)
                 rows[i]->Visible = false;
+    return System::Void();
+}
+
+System::Void schoolcourseProject::ProgressPupils::buttonAbout_Click(System::Object^ sender, System::EventArgs^ e)
+{
+    MyFormAbout^ form = gcnew MyFormAbout(this);
+    form->Show();
     return System::Void();
 }

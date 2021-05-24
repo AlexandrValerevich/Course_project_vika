@@ -114,6 +114,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="dbQuery.cpp" />
+    <ClCompile Include="About.cpp" />
     <ClCompile Include="ProgressClasses.cpp" />
     <ClCompile Include="ProgressPupils.cpp" />
     <ClCompile Include="ProgressSubjects.cpp" />
@@ -133,6 +134,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="dbQuery.h" />
+    <ClInclude Include="About.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="ProgressClasses.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -159,6 +163,9 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="About.resx">
+      <DependentUpon>About.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ProgressClasses.resx">
       <DependentUpon>ProgressClasses.h</DependentUpon>
     </EmbeddedResource>

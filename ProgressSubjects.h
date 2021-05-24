@@ -161,6 +161,7 @@ private: System::Windows::Forms::Button^ buttonPupils;
 private: System::Windows::Forms::DataGridViewTextBoxColumn^ id;
 private: System::Windows::Forms::DataGridViewTextBoxColumn^ dataGridViewTextBoxColumn3;
 private: System::Windows::Forms::DataGridViewTextBoxColumn^ dataGridViewTextBoxColumn4;
+private: System::Windows::Forms::Button^ buttonAbout;
 
 
 
@@ -210,10 +211,11 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dataGridViewTextBoxC
 			this->buttonPupils = (gcnew System::Windows::Forms::Button());
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->dataGridViewAll = (gcnew System::Windows::Forms::DataGridView());
-			this->buttonExit = (gcnew System::Windows::Forms::Button());
 			this->id = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->dataGridViewTextBoxColumn3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->dataGridViewTextBoxColumn4 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->buttonExit = (gcnew System::Windows::Forms::Button());
+			this->buttonAbout = (gcnew System::Windows::Forms::Button());
 			this->panel1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridViewAll))->BeginInit();
 			this->SuspendLayout();
@@ -457,19 +459,6 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dataGridViewTextBoxC
 			this->dataGridViewAll->Size = System::Drawing::Size(530, 570);
 			this->dataGridViewAll->TabIndex = 24;
 			// 
-			// buttonExit
-			// 
-			this->buttonExit->FlatAppearance->BorderSize = 0;
-			this->buttonExit->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->buttonExit->Location = System::Drawing::Point(1039, 0);
-			this->buttonExit->Margin = System::Windows::Forms::Padding(0);
-			this->buttonExit->Name = L"buttonExit";
-			this->buttonExit->Size = System::Drawing::Size(33, 29);
-			this->buttonExit->TabIndex = 25;
-			this->buttonExit->Text = L"x";
-			this->buttonExit->UseVisualStyleBackColor = true;
-			this->buttonExit->Click += gcnew System::EventHandler(this, &ProgressSubjects::buttonExit_Click);
-			// 
 			// id
 			// 
 			this->id->HeaderText = L"id";
@@ -488,11 +477,38 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dataGridViewTextBoxC
 			this->dataGridViewTextBoxColumn4->MinimumWidth = 6;
 			this->dataGridViewTextBoxColumn4->Name = L"dataGridViewTextBoxColumn4";
 			// 
+			// buttonExit
+			// 
+			this->buttonExit->FlatAppearance->BorderSize = 0;
+			this->buttonExit->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->buttonExit->Location = System::Drawing::Point(1039, 0);
+			this->buttonExit->Margin = System::Windows::Forms::Padding(0);
+			this->buttonExit->Name = L"buttonExit";
+			this->buttonExit->Size = System::Drawing::Size(33, 29);
+			this->buttonExit->TabIndex = 25;
+			this->buttonExit->Text = L"x";
+			this->buttonExit->UseVisualStyleBackColor = true;
+			this->buttonExit->Click += gcnew System::EventHandler(this, &ProgressSubjects::buttonExit_Click);
+			// 
+			// buttonAbout
+			// 
+			this->buttonAbout->FlatAppearance->BorderSize = 0;
+			this->buttonAbout->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->buttonAbout->Location = System::Drawing::Point(1006, 0);
+			this->buttonAbout->Margin = System::Windows::Forms::Padding(0);
+			this->buttonAbout->Name = L"buttonAbout";
+			this->buttonAbout->Size = System::Drawing::Size(33, 29);
+			this->buttonAbout->TabIndex = 27;
+			this->buttonAbout->Text = L"\?";
+			this->buttonAbout->UseVisualStyleBackColor = true;
+			this->buttonAbout->Click += gcnew System::EventHandler(this, &ProgressSubjects::buttonAbout_Click);
+			// 
 			// ProgressSubjects
 			// 
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::None;
 			this->BackColor = System::Drawing::SystemColors::ControlLight;
 			this->ClientSize = System::Drawing::Size(1071, 663);
+			this->Controls->Add(this->buttonAbout);
 			this->Controls->Add(this->buttonExit);
 			this->Controls->Add(this->dataGridViewAll);
 			this->Controls->Add(this->label3);
@@ -524,5 +540,6 @@ private: System::Void buttonProgressClasses_Click(System::Object^ sender, System
 private: System::Void buttonProgressSubjects_Click(System::Object^ sender, System::EventArgs^ e);
 private: System::Void buttonExit_Click(System::Object^ sender, System::EventArgs^ e);
 private: System::Void ProgressSubjects_Load(System::Object^ sender, System::EventArgs^ e);
+private: System::Void buttonAbout_Click(System::Object^ sender, System::EventArgs^ e);
 };
 }

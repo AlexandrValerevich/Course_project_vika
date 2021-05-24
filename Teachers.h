@@ -118,6 +118,8 @@ namespace schoolcourseProject {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Subject;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Classroom;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Class;
+private: System::Windows::Forms::Button^ buttonAbout;
+
 
 
 
@@ -223,6 +225,7 @@ namespace schoolcourseProject {
 			this->domainUpDownSubjects = (gcnew System::Windows::Forms::DomainUpDown());
 			this->label7 = (gcnew System::Windows::Forms::Label());
 			this->domainUpDownClasses = (gcnew System::Windows::Forms::DomainUpDown());
+			this->buttonAbout = (gcnew System::Windows::Forms::Button());
 			this->panel1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridViewTeachers))->BeginInit();
 			this->SuspendLayout();
@@ -714,6 +717,19 @@ namespace schoolcourseProject {
 			this->domainUpDownClasses->Text = L"Все";
 			this->domainUpDownClasses->SelectedItemChanged += gcnew System::EventHandler(this, &Teachers::domainUpDownClasses_SelectedItemChanged);
 			// 
+			// buttonAbout
+			// 
+			this->buttonAbout->FlatAppearance->BorderSize = 0;
+			this->buttonAbout->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->buttonAbout->Location = System::Drawing::Point(1006, 0);
+			this->buttonAbout->Margin = System::Windows::Forms::Padding(0);
+			this->buttonAbout->Name = L"buttonAbout";
+			this->buttonAbout->Size = System::Drawing::Size(33, 29);
+			this->buttonAbout->TabIndex = 25;
+			this->buttonAbout->Text = L"\?";
+			this->buttonAbout->UseVisualStyleBackColor = true;
+			this->buttonAbout->Click += gcnew System::EventHandler(this, &Teachers::buttonAbout_Click);
+			// 
 			// Teachers
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 17);
@@ -721,6 +737,7 @@ namespace schoolcourseProject {
 			this->BackColor = System::Drawing::SystemColors::ControlLight;
 			this->ClientSize = System::Drawing::Size(1071, 663);
 			this->ControlBox = false;
+			this->Controls->Add(this->buttonAbout);
 			this->Controls->Add(this->label7);
 			this->Controls->Add(this->domainUpDownClasses);
 			this->Controls->Add(this->domainUpDownSubjects);
@@ -775,5 +792,6 @@ private: System::Void FillingTextBoxTeachers(System::Object^ sender, System::Win
 private: System::Void ClearTextBoxTeachers();
 private: System::Void domainUpDownSubjects_SelectedItemChanged(System::Object^ sender, System::EventArgs^ e);
 private: System::Void domainUpDownClasses_SelectedItemChanged(System::Object^ sender, System::EventArgs^ e);
+private: System::Void buttonAbout_Click(System::Object^ sender, System::EventArgs^ e);
 };
 }

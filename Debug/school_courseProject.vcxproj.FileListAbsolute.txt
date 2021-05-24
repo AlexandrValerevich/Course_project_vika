@@ -18,3 +18,4 @@ C:\Users\Александр\source\repos\school_courseProject\school_courseProje
 C:\Users\Александр\source\repos\school_courseProject\school_courseProject\Debug\schoolcourseProject.Subjects.resources
 C:\Users\Александр\source\repos\school_courseProject\school_courseProject\Debug\schoolcourseProject.Teachers.resources
 C:\Users\Александр\source\repos\school_courseProject\school_courseProject\Debug\school_courseProject.vcxproj.GenerateResource.cache
+C:\Users\Александр\source\repos\school_courseProject\school_courseProject\Debug\schoolcourseProject.About.resources

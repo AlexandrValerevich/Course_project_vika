@@ -75,6 +75,7 @@ namespace schoolcourseProject {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ NamePupil;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ PatronymicPupil;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ ClassPupil;
+	private: System::Windows::Forms::Button^ buttonAbout;
 
 
 
@@ -111,6 +112,11 @@ namespace schoolcourseProject {
 			this->buttonTeachers = (gcnew System::Windows::Forms::Button());
 			this->buttonPupils = (gcnew System::Windows::Forms::Button());
 			this->dataGridViewPupils = (gcnew System::Windows::Forms::DataGridView());
+			this->id = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->SurnamePupil = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->NamePupil = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->PatronymicPupil = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->ClassPupil = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->textBoxSurname = (gcnew System::Windows::Forms::TextBox());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->textBoxName = (gcnew System::Windows::Forms::TextBox());
@@ -125,11 +131,7 @@ namespace schoolcourseProject {
 			this->buttonExit = (gcnew System::Windows::Forms::Button());
 			this->labelID = (gcnew System::Windows::Forms::Label());
 			this->textBoxID = (gcnew System::Windows::Forms::TextBox());
-			this->id = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->SurnamePupil = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->NamePupil = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->PatronymicPupil = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->ClassPupil = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->buttonAbout = (gcnew System::Windows::Forms::Button());
 			this->panel1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridViewPupils))->BeginInit();
 			this->SuspendLayout();
@@ -368,6 +370,41 @@ namespace schoolcourseProject {
 			this->dataGridViewPupils->TabIndex = 1;
 			this->dataGridViewPupils->RowEnter += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &Pupils::FillngTextBoxPupils);
 			// 
+			// id
+			// 
+			this->id->HeaderText = L"id";
+			this->id->MinimumWidth = 6;
+			this->id->Name = L"id";
+			this->id->Visible = false;
+			// 
+			// SurnamePupil
+			// 
+			this->SurnamePupil->FillWeight = 256.6845F;
+			this->SurnamePupil->HeaderText = L"Фамилия";
+			this->SurnamePupil->MinimumWidth = 140;
+			this->SurnamePupil->Name = L"SurnamePupil";
+			// 
+			// NamePupil
+			// 
+			this->NamePupil->FillWeight = 19.98947F;
+			this->NamePupil->HeaderText = L"Имя";
+			this->NamePupil->MinimumWidth = 140;
+			this->NamePupil->Name = L"NamePupil";
+			// 
+			// PatronymicPupil
+			// 
+			this->PatronymicPupil->FillWeight = 58.99557F;
+			this->PatronymicPupil->HeaderText = L"Отчество";
+			this->PatronymicPupil->MinimumWidth = 140;
+			this->PatronymicPupil->Name = L"PatronymicPupil";
+			// 
+			// ClassPupil
+			// 
+			this->ClassPupil->FillWeight = 64.33047F;
+			this->ClassPupil->HeaderText = L"Класс";
+			this->ClassPupil->MinimumWidth = 100;
+			this->ClassPupil->Name = L"ClassPupil";
+			// 
 			// textBoxSurname
 			// 
 			this->textBoxSurname->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
@@ -524,40 +561,18 @@ namespace schoolcourseProject {
 			this->textBoxID->Size = System::Drawing::Size(151, 21);
 			this->textBoxID->TabIndex = 16;
 			// 
-			// id
+			// buttonAbout
 			// 
-			this->id->HeaderText = L"id";
-			this->id->MinimumWidth = 6;
-			this->id->Name = L"id";
-			this->id->Visible = false;
-			// 
-			// SurnamePupil
-			// 
-			this->SurnamePupil->FillWeight = 256.6845F;
-			this->SurnamePupil->HeaderText = L"Фамилия";
-			this->SurnamePupil->MinimumWidth = 140;
-			this->SurnamePupil->Name = L"SurnamePupil";
-			// 
-			// NamePupil
-			// 
-			this->NamePupil->FillWeight = 19.98947F;
-			this->NamePupil->HeaderText = L"Имя";
-			this->NamePupil->MinimumWidth = 140;
-			this->NamePupil->Name = L"NamePupil";
-			// 
-			// PatronymicPupil
-			// 
-			this->PatronymicPupil->FillWeight = 58.99557F;
-			this->PatronymicPupil->HeaderText = L"Отчество";
-			this->PatronymicPupil->MinimumWidth = 140;
-			this->PatronymicPupil->Name = L"PatronymicPupil";
-			// 
-			// ClassPupil
-			// 
-			this->ClassPupil->FillWeight = 64.33047F;
-			this->ClassPupil->HeaderText = L"Класс";
-			this->ClassPupil->MinimumWidth = 100;
-			this->ClassPupil->Name = L"ClassPupil";
+			this->buttonAbout->FlatAppearance->BorderSize = 0;
+			this->buttonAbout->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->buttonAbout->Location = System::Drawing::Point(1006, 0);
+			this->buttonAbout->Margin = System::Windows::Forms::Padding(0);
+			this->buttonAbout->Name = L"buttonAbout";
+			this->buttonAbout->Size = System::Drawing::Size(33, 29);
+			this->buttonAbout->TabIndex = 27;
+			this->buttonAbout->Text = L"\?";
+			this->buttonAbout->UseVisualStyleBackColor = true;
+			this->buttonAbout->Click += gcnew System::EventHandler(this, &Pupils::buttonAbout_Click);
 			// 
 			// Pupils
 			// 
@@ -566,6 +581,7 @@ namespace schoolcourseProject {
 			this->BackColor = System::Drawing::SystemColors::ControlLight;
 			this->ClientSize = System::Drawing::Size(1071, 663);
 			this->ControlBox = false;
+			this->Controls->Add(this->buttonAbout);
 			this->Controls->Add(this->labelID);
 			this->Controls->Add(this->textBoxID);
 			this->Controls->Add(this->buttonExit);
@@ -614,5 +630,6 @@ private: System::Void FillngTextBoxPupils(System::Object^ sender, System::Window
 private: System::Void ClearTextBoxPupils();
 private: System::Void buttonPupils_Click(System::Object^ sender, System::EventArgs^ e);
 private: System::Void domainUpDownClasses_SelectedItemChanged(System::Object^ sender, System::EventArgs^ e);
+private: System::Void buttonAbout_Click(System::Object^ sender, System::EventArgs^ e);
 };
 }

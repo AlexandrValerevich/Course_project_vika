@@ -151,6 +151,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dataGridViewTextBoxC
 private: System::Windows::Forms::DataGridViewTextBoxColumn^ dataGridViewTextBoxColumn8;
 private: System::Windows::Forms::DataGridViewTextBoxColumn^ dataGridViewTextBoxColumn9;
 private: System::Windows::Forms::DataGridViewTextBoxColumn^ dataGridViewTextBoxColumn12;
+private: System::Windows::Forms::Button^ buttonAbout;
 
 
 
@@ -210,37 +211,38 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dataGridViewTextBoxC
 			this->buttonTeachers = (gcnew System::Windows::Forms::Button());
 			this->buttonPupils = (gcnew System::Windows::Forms::Button());
 			this->dataGridViewHighPupil = (gcnew System::Windows::Forms::DataGridView());
-			this->label1 = (gcnew System::Windows::Forms::Label());
-			this->label2 = (gcnew System::Windows::Forms::Label());
-			this->label3 = (gcnew System::Windows::Forms::Label());
-			this->domainUpDownHighPupil = (gcnew System::Windows::Forms::DomainUpDown());
-			this->label4 = (gcnew System::Windows::Forms::Label());
-			this->dataGridViewLowPupil = (gcnew System::Windows::Forms::DataGridView());
-			this->label5 = (gcnew System::Windows::Forms::Label());
-			this->domainUpDownLowPupil = (gcnew System::Windows::Forms::DomainUpDown());
-			this->label6 = (gcnew System::Windows::Forms::Label());
-			this->domainUpDownAll = (gcnew System::Windows::Forms::DomainUpDown());
-			this->dataGridViewAll = (gcnew System::Windows::Forms::DataGridView());
-			this->fileSystemWatcher1 = (gcnew System::IO::FileSystemWatcher());
-			this->buttonExit = (gcnew System::Windows::Forms::Button());
 			this->id_high = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->PupilsClass = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->SurnameTeacher = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->NameTeacher = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->PatronymicTeacher = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->AverageBall = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->label2 = (gcnew System::Windows::Forms::Label());
+			this->label3 = (gcnew System::Windows::Forms::Label());
+			this->domainUpDownHighPupil = (gcnew System::Windows::Forms::DomainUpDown());
+			this->label4 = (gcnew System::Windows::Forms::Label());
+			this->dataGridViewLowPupil = (gcnew System::Windows::Forms::DataGridView());
 			this->id_low = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->dataGridViewTextBoxColumn1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->dataGridViewTextBoxColumn2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->dataGridViewTextBoxColumn3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->dataGridViewTextBoxColumn4 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->dataGridViewTextBoxColumn11 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->label5 = (gcnew System::Windows::Forms::Label());
+			this->domainUpDownLowPupil = (gcnew System::Windows::Forms::DomainUpDown());
+			this->label6 = (gcnew System::Windows::Forms::Label());
+			this->domainUpDownAll = (gcnew System::Windows::Forms::DomainUpDown());
+			this->dataGridViewAll = (gcnew System::Windows::Forms::DataGridView());
 			this->id_all = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->dataGridViewTextBoxColumn6 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->dataGridViewTextBoxColumn7 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->dataGridViewTextBoxColumn8 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->dataGridViewTextBoxColumn9 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->dataGridViewTextBoxColumn12 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->fileSystemWatcher1 = (gcnew System::IO::FileSystemWatcher());
+			this->buttonExit = (gcnew System::Windows::Forms::Button());
+			this->buttonAbout = (gcnew System::Windows::Forms::Button());
 			this->panel1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridViewHighPupil))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridViewLowPupil))->BeginInit();
@@ -480,6 +482,42 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dataGridViewTextBoxC
 			this->dataGridViewHighPupil->Size = System::Drawing::Size(839, 104);
 			this->dataGridViewHighPupil->TabIndex = 1;
 			// 
+			// id_high
+			// 
+			this->id_high->HeaderText = L"id";
+			this->id_high->Name = L"id_high";
+			this->id_high->Visible = false;
+			// 
+			// PupilsClass
+			// 
+			this->PupilsClass->HeaderText = L"Класс";
+			this->PupilsClass->MinimumWidth = 6;
+			this->PupilsClass->Name = L"PupilsClass";
+			// 
+			// SurnameTeacher
+			// 
+			this->SurnameTeacher->HeaderText = L"Фамилия";
+			this->SurnameTeacher->MinimumWidth = 6;
+			this->SurnameTeacher->Name = L"SurnameTeacher";
+			// 
+			// NameTeacher
+			// 
+			this->NameTeacher->HeaderText = L"Имя";
+			this->NameTeacher->MinimumWidth = 6;
+			this->NameTeacher->Name = L"NameTeacher";
+			// 
+			// PatronymicTeacher
+			// 
+			this->PatronymicTeacher->HeaderText = L"Отчество";
+			this->PatronymicTeacher->MinimumWidth = 6;
+			this->PatronymicTeacher->Name = L"PatronymicTeacher";
+			// 
+			// AverageBall
+			// 
+			this->AverageBall->HeaderText = L"Средний балл";
+			this->AverageBall->MinimumWidth = 6;
+			this->AverageBall->Name = L"AverageBall";
+			// 
 			// label1
 			// 
 			this->label1->AutoSize = true;
@@ -549,6 +587,42 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dataGridViewTextBoxC
 			this->dataGridViewLowPupil->Size = System::Drawing::Size(839, 104);
 			this->dataGridViewLowPupil->TabIndex = 11;
 			// 
+			// id_low
+			// 
+			this->id_low->HeaderText = L"id";
+			this->id_low->Name = L"id_low";
+			this->id_low->Visible = false;
+			// 
+			// dataGridViewTextBoxColumn1
+			// 
+			this->dataGridViewTextBoxColumn1->HeaderText = L"Класс";
+			this->dataGridViewTextBoxColumn1->MinimumWidth = 6;
+			this->dataGridViewTextBoxColumn1->Name = L"dataGridViewTextBoxColumn1";
+			// 
+			// dataGridViewTextBoxColumn2
+			// 
+			this->dataGridViewTextBoxColumn2->HeaderText = L"Фамилия";
+			this->dataGridViewTextBoxColumn2->MinimumWidth = 6;
+			this->dataGridViewTextBoxColumn2->Name = L"dataGridViewTextBoxColumn2";
+			// 
+			// dataGridViewTextBoxColumn3
+			// 
+			this->dataGridViewTextBoxColumn3->HeaderText = L"Имя";
+			this->dataGridViewTextBoxColumn3->MinimumWidth = 6;
+			this->dataGridViewTextBoxColumn3->Name = L"dataGridViewTextBoxColumn3";
+			// 
+			// dataGridViewTextBoxColumn4
+			// 
+			this->dataGridViewTextBoxColumn4->HeaderText = L"Отчество";
+			this->dataGridViewTextBoxColumn4->MinimumWidth = 6;
+			this->dataGridViewTextBoxColumn4->Name = L"dataGridViewTextBoxColumn4";
+			// 
+			// dataGridViewTextBoxColumn11
+			// 
+			this->dataGridViewTextBoxColumn11->HeaderText = L"Средний балл";
+			this->dataGridViewTextBoxColumn11->MinimumWidth = 6;
+			this->dataGridViewTextBoxColumn11->Name = L"dataGridViewTextBoxColumn11";
+			// 
 			// label5
 			// 
 			this->label5->AutoSize = true;
@@ -617,96 +691,6 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dataGridViewTextBoxC
 			this->dataGridViewAll->Size = System::Drawing::Size(839, 115);
 			this->dataGridViewAll->TabIndex = 16;
 			// 
-			// fileSystemWatcher1
-			// 
-			this->fileSystemWatcher1->EnableRaisingEvents = true;
-			this->fileSystemWatcher1->SynchronizingObject = this;
-			// 
-			// buttonExit
-			// 
-			this->buttonExit->FlatAppearance->BorderSize = 0;
-			this->buttonExit->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->buttonExit->Location = System::Drawing::Point(1039, 0);
-			this->buttonExit->Margin = System::Windows::Forms::Padding(0);
-			this->buttonExit->Name = L"buttonExit";
-			this->buttonExit->Size = System::Drawing::Size(33, 29);
-			this->buttonExit->TabIndex = 22;
-			this->buttonExit->Text = L"x";
-			this->buttonExit->UseVisualStyleBackColor = true;
-			this->buttonExit->Click += gcnew System::EventHandler(this, &ProgressPupils::buttonExit_Click);
-			// 
-			// id_high
-			// 
-			this->id_high->HeaderText = L"id";
-			this->id_high->Name = L"id_high";
-			this->id_high->Visible = false;
-			// 
-			// PupilsClass
-			// 
-			this->PupilsClass->HeaderText = L"Класс";
-			this->PupilsClass->MinimumWidth = 6;
-			this->PupilsClass->Name = L"PupilsClass";
-			// 
-			// SurnameTeacher
-			// 
-			this->SurnameTeacher->HeaderText = L"Фамилия";
-			this->SurnameTeacher->MinimumWidth = 6;
-			this->SurnameTeacher->Name = L"SurnameTeacher";
-			// 
-			// NameTeacher
-			// 
-			this->NameTeacher->HeaderText = L"Имя";
-			this->NameTeacher->MinimumWidth = 6;
-			this->NameTeacher->Name = L"NameTeacher";
-			// 
-			// PatronymicTeacher
-			// 
-			this->PatronymicTeacher->HeaderText = L"Отчество";
-			this->PatronymicTeacher->MinimumWidth = 6;
-			this->PatronymicTeacher->Name = L"PatronymicTeacher";
-			// 
-			// AverageBall
-			// 
-			this->AverageBall->HeaderText = L"Средний балл";
-			this->AverageBall->MinimumWidth = 6;
-			this->AverageBall->Name = L"AverageBall";
-			// 
-			// id_low
-			// 
-			this->id_low->HeaderText = L"id";
-			this->id_low->Name = L"id_low";
-			this->id_low->Visible = false;
-			// 
-			// dataGridViewTextBoxColumn1
-			// 
-			this->dataGridViewTextBoxColumn1->HeaderText = L"Класс";
-			this->dataGridViewTextBoxColumn1->MinimumWidth = 6;
-			this->dataGridViewTextBoxColumn1->Name = L"dataGridViewTextBoxColumn1";
-			// 
-			// dataGridViewTextBoxColumn2
-			// 
-			this->dataGridViewTextBoxColumn2->HeaderText = L"Фамилия";
-			this->dataGridViewTextBoxColumn2->MinimumWidth = 6;
-			this->dataGridViewTextBoxColumn2->Name = L"dataGridViewTextBoxColumn2";
-			// 
-			// dataGridViewTextBoxColumn3
-			// 
-			this->dataGridViewTextBoxColumn3->HeaderText = L"Имя";
-			this->dataGridViewTextBoxColumn3->MinimumWidth = 6;
-			this->dataGridViewTextBoxColumn3->Name = L"dataGridViewTextBoxColumn3";
-			// 
-			// dataGridViewTextBoxColumn4
-			// 
-			this->dataGridViewTextBoxColumn4->HeaderText = L"Отчество";
-			this->dataGridViewTextBoxColumn4->MinimumWidth = 6;
-			this->dataGridViewTextBoxColumn4->Name = L"dataGridViewTextBoxColumn4";
-			// 
-			// dataGridViewTextBoxColumn11
-			// 
-			this->dataGridViewTextBoxColumn11->HeaderText = L"Средний балл";
-			this->dataGridViewTextBoxColumn11->MinimumWidth = 6;
-			this->dataGridViewTextBoxColumn11->Name = L"dataGridViewTextBoxColumn11";
-			// 
 			// id_all
 			// 
 			this->id_all->HeaderText = L"id";
@@ -743,11 +727,43 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ dataGridViewTextBoxC
 			this->dataGridViewTextBoxColumn12->MinimumWidth = 6;
 			this->dataGridViewTextBoxColumn12->Name = L"dataGridViewTextBoxColumn12";
 			// 
+			// fileSystemWatcher1
+			// 
+			this->fileSystemWatcher1->EnableRaisingEvents = true;
+			this->fileSystemWatcher1->SynchronizingObject = this;
+			// 
+			// buttonExit
+			// 
+			this->buttonExit->FlatAppearance->BorderSize = 0;
+			this->buttonExit->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->buttonExit->Location = System::Drawing::Point(1039, 0);
+			this->buttonExit->Margin = System::Windows::Forms::Padding(0);
+			this->buttonExit->Name = L"buttonExit";
+			this->buttonExit->Size = System::Drawing::Size(33, 29);
+			this->buttonExit->TabIndex = 22;
+			this->buttonExit->Text = L"x";
+			this->buttonExit->UseVisualStyleBackColor = true;
+			this->buttonExit->Click += gcnew System::EventHandler(this, &ProgressPupils::buttonExit_Click);
+			// 
+			// buttonAbout
+			// 
+			this->buttonAbout->FlatAppearance->BorderSize = 0;
+			this->buttonAbout->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->buttonAbout->Location = System::Drawing::Point(1008, 0);
+			this->buttonAbout->Margin = System::Windows::Forms::Padding(0);
+			this->buttonAbout->Name = L"buttonAbout";
+			this->buttonAbout->Size = System::Drawing::Size(33, 29);
+			this->buttonAbout->TabIndex = 27;
+			this->buttonAbout->Text = L"\?";
+			this->buttonAbout->UseVisualStyleBackColor = true;
+			this->buttonAbout->Click += gcnew System::EventHandler(this, &ProgressPupils::buttonAbout_Click);
+			// 
 			// ProgressPupils
 			// 
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::None;
 			this->BackColor = System::Drawing::SystemColors::ControlLight;
 			this->ClientSize = System::Drawing::Size(1071, 663);
+			this->Controls->Add(this->buttonAbout);
 			this->Controls->Add(this->buttonExit);
 			this->Controls->Add(this->dataGridViewAll);
 			this->Controls->Add(this->domainUpDownAll);
@@ -795,5 +811,6 @@ private: System::Void buttonExit_Click(System::Object^ sender, System::EventArgs
 private: System::Void domainUpDownHighPupil_SelectedItemChanged(System::Object^ sender, System::EventArgs^ e);
 private: System::Void domainUpDownLowPupil_SelectedItemChanged(System::Object^ sender, System::EventArgs^ e);
 private: System::Void domainUpDownAll_SelectedItemChanged(System::Object^ sender, System::EventArgs^ e);
+private: System::Void buttonAbout_Click(System::Object^ sender, System::EventArgs^ e);
 };
 }

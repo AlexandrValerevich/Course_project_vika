@@ -107,6 +107,7 @@ namespace schoolcourseProject {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ NameStudent;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Subject;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Mark;
+	private: System::Windows::Forms::Button^ buttonAbout;
 
 
 
@@ -151,6 +152,12 @@ namespace schoolcourseProject {
 			this->buttonTeachers = (gcnew System::Windows::Forms::Button());
 			this->buttonPupils = (gcnew System::Windows::Forms::Button());
 			this->dataGridViewMarks = (gcnew System::Windows::Forms::DataGridView());
+			this->ID = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->NumberClass = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->SurnameStudent = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->NameStudent = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Subject = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Mark = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->domainUpDownClasses = (gcnew System::Windows::Forms::DomainUpDown());
 			this->label4 = (gcnew System::Windows::Forms::Label());
@@ -165,12 +172,7 @@ namespace schoolcourseProject {
 			this->domainUpDownPupil = (gcnew System::Windows::Forms::DomainUpDown());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->textBoxID = (gcnew System::Windows::Forms::TextBox());
-			this->ID = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->NumberClass = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->SurnameStudent = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->NameStudent = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Subject = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Mark = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->buttonAbout = (gcnew System::Windows::Forms::Button());
 			this->panel1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridViewMarks))->BeginInit();
 			this->SuspendLayout();
@@ -409,6 +411,42 @@ namespace schoolcourseProject {
 			this->dataGridViewMarks->TabIndex = 1;
 			this->dataGridViewMarks->RowEnter += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &QuarterMarks::FillingTextBoxQuarterMarks);
 			// 
+			// ID
+			// 
+			this->ID->HeaderText = L"id";
+			this->ID->Name = L"ID";
+			this->ID->Visible = false;
+			// 
+			// NumberClass
+			// 
+			this->NumberClass->HeaderText = L"Класс";
+			this->NumberClass->MinimumWidth = 6;
+			this->NumberClass->Name = L"NumberClass";
+			// 
+			// SurnameStudent
+			// 
+			this->SurnameStudent->HeaderText = L"Фамилия";
+			this->SurnameStudent->MinimumWidth = 6;
+			this->SurnameStudent->Name = L"SurnameStudent";
+			// 
+			// NameStudent
+			// 
+			this->NameStudent->HeaderText = L"Имя";
+			this->NameStudent->MinimumWidth = 6;
+			this->NameStudent->Name = L"NameStudent";
+			// 
+			// Subject
+			// 
+			this->Subject->HeaderText = L"Предмет";
+			this->Subject->MinimumWidth = 6;
+			this->Subject->Name = L"Subject";
+			// 
+			// Mark
+			// 
+			this->Mark->HeaderText = L"Оценка";
+			this->Mark->MinimumWidth = 6;
+			this->Mark->Name = L"Mark";
+			// 
 			// label1
 			// 
 			this->label1->AutoSize = true;
@@ -575,41 +613,18 @@ namespace schoolcourseProject {
 			this->textBoxID->Size = System::Drawing::Size(151, 21);
 			this->textBoxID->TabIndex = 22;
 			// 
-			// ID
+			// buttonAbout
 			// 
-			this->ID->HeaderText = L"id";
-			this->ID->Name = L"ID";
-			this->ID->Visible = false;
-			// 
-			// NumberClass
-			// 
-			this->NumberClass->HeaderText = L"Класс";
-			this->NumberClass->MinimumWidth = 6;
-			this->NumberClass->Name = L"NumberClass";
-			// 
-			// SurnameStudent
-			// 
-			this->SurnameStudent->HeaderText = L"Фамилия";
-			this->SurnameStudent->MinimumWidth = 6;
-			this->SurnameStudent->Name = L"SurnameStudent";
-			// 
-			// NameStudent
-			// 
-			this->NameStudent->HeaderText = L"Имя";
-			this->NameStudent->MinimumWidth = 6;
-			this->NameStudent->Name = L"NameStudent";
-			// 
-			// Subject
-			// 
-			this->Subject->HeaderText = L"Предмет";
-			this->Subject->MinimumWidth = 6;
-			this->Subject->Name = L"Subject";
-			// 
-			// Mark
-			// 
-			this->Mark->HeaderText = L"Оценка";
-			this->Mark->MinimumWidth = 6;
-			this->Mark->Name = L"Mark";
+			this->buttonAbout->FlatAppearance->BorderSize = 0;
+			this->buttonAbout->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->buttonAbout->Location = System::Drawing::Point(1006, 0);
+			this->buttonAbout->Margin = System::Windows::Forms::Padding(0);
+			this->buttonAbout->Name = L"buttonAbout";
+			this->buttonAbout->Size = System::Drawing::Size(33, 29);
+			this->buttonAbout->TabIndex = 27;
+			this->buttonAbout->Text = L"\?";
+			this->buttonAbout->UseVisualStyleBackColor = true;
+			this->buttonAbout->Click += gcnew System::EventHandler(this, &QuarterMarks::buttonAbout_Click);
 			// 
 			// QuarterMarks
 			// 
@@ -618,6 +633,7 @@ namespace schoolcourseProject {
 			this->BackColor = System::Drawing::SystemColors::ControlLight;
 			this->ClientSize = System::Drawing::Size(1071, 663);
 			this->ControlBox = false;
+			this->Controls->Add(this->buttonAbout);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->textBoxID);
 			this->Controls->Add(this->domainUpDownPupil);
@@ -671,5 +687,6 @@ private: System::Void domainUpDownPupil_SelectedItemChanged(System::Object^ send
 private: System::Void domainUpDownSubjects_SelectedItemChanged(System::Object^ sender, System::EventArgs^ e);
 private: System::Void domainUpDown_SelectedItemChanged();
 
+private: System::Void buttonAbout_Click(System::Object^ sender, System::EventArgs^ e);
 };
 }

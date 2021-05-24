@@ -89,6 +89,7 @@ namespace schoolcourseProject {
 	private: System::Windows::Forms::TextBox^ textBoxID;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ ID;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ NameSubject;
+	private: System::Windows::Forms::Button^ buttonAbout;
 
 
 
@@ -123,6 +124,8 @@ namespace schoolcourseProject {
 			this->buttonTeachers = (gcnew System::Windows::Forms::Button());
 			this->buttonPupils = (gcnew System::Windows::Forms::Button());
 			this->dataGridViewSubjects = (gcnew System::Windows::Forms::DataGridView());
+			this->ID = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->NameSubject = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->textBoxSubject = (gcnew System::Windows::Forms::TextBox());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->buttonAdd = (gcnew System::Windows::Forms::Button());
@@ -131,8 +134,7 @@ namespace schoolcourseProject {
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->textBoxID = (gcnew System::Windows::Forms::TextBox());
-			this->ID = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->NameSubject = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->buttonAbout = (gcnew System::Windows::Forms::Button());
 			this->panel1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridViewSubjects))->BeginInit();
 			this->SuspendLayout();
@@ -371,6 +373,19 @@ namespace schoolcourseProject {
 			this->dataGridViewSubjects->TabIndex = 1;
 			this->dataGridViewSubjects->RowEnter += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &Subjects::FillingTextBoxSubjects);
 			// 
+			// ID
+			// 
+			this->ID->HeaderText = L"ID";
+			this->ID->MinimumWidth = 6;
+			this->ID->Name = L"ID";
+			this->ID->Visible = false;
+			// 
+			// NameSubject
+			// 
+			this->NameSubject->HeaderText = L"Предмет";
+			this->NameSubject->MinimumWidth = 6;
+			this->NameSubject->Name = L"NameSubject";
+			// 
 			// textBoxSubject
 			// 
 			this->textBoxSubject->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
@@ -459,18 +474,18 @@ namespace schoolcourseProject {
 			this->textBoxID->Size = System::Drawing::Size(151, 21);
 			this->textBoxID->TabIndex = 17;
 			// 
-			// ID
+			// buttonAbout
 			// 
-			this->ID->HeaderText = L"ID";
-			this->ID->MinimumWidth = 6;
-			this->ID->Name = L"ID";
-			this->ID->Visible = false;
-			// 
-			// NameSubject
-			// 
-			this->NameSubject->HeaderText = L"Предмет";
-			this->NameSubject->MinimumWidth = 6;
-			this->NameSubject->Name = L"NameSubject";
+			this->buttonAbout->FlatAppearance->BorderSize = 0;
+			this->buttonAbout->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->buttonAbout->Location = System::Drawing::Point(1006, 0);
+			this->buttonAbout->Margin = System::Windows::Forms::Padding(0);
+			this->buttonAbout->Name = L"buttonAbout";
+			this->buttonAbout->Size = System::Drawing::Size(33, 29);
+			this->buttonAbout->TabIndex = 27;
+			this->buttonAbout->Text = L"\?";
+			this->buttonAbout->UseVisualStyleBackColor = true;
+			this->buttonAbout->Click += gcnew System::EventHandler(this, &Subjects::buttonAbout_Click);
 			// 
 			// Subjects
 			// 
@@ -479,6 +494,7 @@ namespace schoolcourseProject {
 			this->BackColor = System::Drawing::SystemColors::ControlLight;
 			this->ClientSize = System::Drawing::Size(1071, 663);
 			this->ControlBox = false;
+			this->Controls->Add(this->buttonAbout);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->textBoxID);
 			this->Controls->Add(this->button1);
@@ -520,5 +536,6 @@ private: System::Void Subjects_Load(System::Object^ sender, System::EventArgs^ e
 private: System::Void FillingTextBoxSubjects(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e);
 private: System::Void ClearTextBoxSubjects();
 private: System::Void buttonExit_Click(System::Object^ sender, System::EventArgs^ e);
+private: System::Void buttonAbout_Click(System::Object^ sender, System::EventArgs^ e);
 };
 }
